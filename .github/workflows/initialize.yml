@@ -19,7 +19,7 @@ jobs:
   initialize_repository:
     if: github.repository != 'FAIRmat-NFDI/nomad-distro-template'
     runs-on: ubuntu-latest
-
+    permissions: write-all
     steps:
       - uses: actions/checkout@v3
 
