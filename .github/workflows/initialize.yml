@@ -19,13 +19,9 @@ jobs:
   initialize_repository:
     if: github.repository != 'FAIRmat-NFDI/nomad-distro-template'
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/checkout@v3
 
       # Replaces the template repository name in the README with the new one
