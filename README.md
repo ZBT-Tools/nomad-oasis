@@ -1,7 +1,7 @@
 ![docker image](https://github.com/ZBT-Tools/nomad-oasis/actions/workflows/docker-publish.yml/badge.svg)
 
 
-# ZBT-Tools's NOMAD Oasis Distribution
+# ZBT-Tools' NOMAD Oasis Distribution
 
 This is the NOMAD Oasis distribution of ZBT-Tools.
 Below are instructions for how to [deploy this distribution](#deploying-the-distribution)
