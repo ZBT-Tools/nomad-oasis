@@ -3667,6 +3667,7 @@ plugins = [
     { name = "nomad-parser-plugins-database" },
     { name = "nomad-parser-plugins-electronic" },
     { name = "nomad-parser-plugins-workflow" },
+    { name = "nomad-plugin-parser-example" },
     { name = "nomad-porous-materials" },
     { name = "nomad-schema-plugin-run" },
     { name = "nomad-schema-plugin-simulation-workflow" },
@@ -3691,6 +3692,7 @@ requires-dist = [
     { name = "nomad-parser-plugins-database", marker = "extra == 'plugins'", specifier = ">=1.0" },
     { name = "nomad-parser-plugins-electronic", marker = "extra == 'plugins'", specifier = ">=1.0" },
     { name = "nomad-parser-plugins-workflow", marker = "extra == 'plugins'", specifier = ">=1.0" },
+    { name = "nomad-plugin-parser-example", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-plugin-parser-example.git?rev=493b338e56630cfe12a3773887da08f600b7f985#493b338e56630cfe12a3773887da08f600b7f985" },
     { name = "nomad-porous-materials", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-porous-materials.git?rev=522f4a3208077f534f1c5e886527ee2104283d0b#522f4a3208077f534f1c5e886527ee2104283d0b" },
     { name = "nomad-schema-plugin-run", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
     { name = "nomad-schema-plugin-simulation-workflow", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
@@ -3994,6 +3996,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/fe/14/66e9027d404f07c106d8698e4a8e1e0cf4504a13bd948f7a01c999368122/nomad_parser_plugins_workflow-1.0.tar.gz", hash = "sha256:1485d0a8d14a293cd22f873d7486ca528eddf20fc6964f4b99b12e73fc2167b3", size = 80543 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/31/59/016925d317e2dda3092b5a353db018c8cbdf38315256a56f7545ffb21fe9/nomad_parser_plugins_workflow-1.0-py3-none-any.whl", hash = "sha256:221915010af3d3f25e6bcd009101da1430eb9955ef4fc6b88114f3b7a482e01a", size = 107615 },
+]
+
+[[package]]
+name = "nomad-plugin-parser-example"
+version = "0.1.0"
+source = { git = "https://github.com/ZBT-Tools/nomad-plugin-parser-example.git?rev=493b338e56630cfe12a3773887da08f600b7f985#493b338e56630cfe12a3773887da08f600b7f985" }
+dependencies = [
+    { name = "nomad-lab" },
+    { name = "python-magic-bin", marker = "sys_platform == 'win32'" },
 ]
 
 [[package]]
