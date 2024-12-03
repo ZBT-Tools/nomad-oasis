@@ -1170,6 +1170,11 @@ wheels = [
 ]
 
 [[package]]
+name = "echem-data"
+version = "0.0.1"
+source = { git = "https://github.com/ZBT-Tools/ElectrochemDataProcessing.git#4286c3fd245e934582b599a4ffd00c492f9eda08" }
+
+[[package]]
 name = "eelsdbconverter"
 version = "1.0"
 source = { git = "https://github.com/nomad-coe/nomad-parser-eelsdb.git?rev=entry-point#788eb03dc71ef9b164e2a5ccb9c0209b546f5c38" }
