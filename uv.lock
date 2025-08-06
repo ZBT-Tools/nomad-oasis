@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.10, <3.13"
 resolution-markers = [
     "python_full_version >= '3.12'",
@@ -4953,7 +4953,7 @@ wheels = [
 
 [[package]]
 name = "pynxtools-em"
-version = "0.3.2"
+version = "0.3.3"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "flatdict" },
@@ -4969,9 +4969,9 @@ dependencies = [
     { name = "xmltodict" },
     { name = "xraydb" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d4/38/e847649011312a063b070ad94df2ece9b3784555d1100fae664e804fd20b/pynxtools_em-0.3.2.tar.gz", hash = "sha256:4c2f20ae37249ab1fe25cb5f7f9e5b1406b63dd78aaaa2df18c3a63fbe5a5f67", size = 129428, upload-time = "2025-03-25T15:48:00.546Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/31/a7/b615cd34c51d6933e3d66f75ae84bb94b903da9ed18a7c64443cf1c41577/pynxtools_em-0.3.3.tar.gz", hash = "sha256:b920f3c252fa653dbfc37b9825c81d4fba54d54e9118e024e7daebe4ad60e2af", size = 129489, upload-time = "2025-07-29T13:47:36.901Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ff/b7/e7bfa5b801ced1b334223fd1e0a524141f9c08a2607cfb49513829f7e42d/pynxtools_em-0.3.2-py3-none-any.whl", hash = "sha256:1c10d721c2f4ee2c04bf649525cd03fcec965aeae41630d0f799404e12626ff3", size = 208551, upload-time = "2025-03-25T15:47:59.049Z" },
+    { url = "https://files.pythonhosted.org/packages/26/96/6cff00fe298c4b9c2d6594a0c04940da071f20cdc4b2b409f46adb34de79/pynxtools_em-0.3.3-py3-none-any.whl", hash = "sha256:1e6690d9c709ae3bcf407d01470028b196f9f73a251f064fd906163d0031595c", size = 208656, upload-time = "2025-07-29T13:47:35.437Z" },
 ]
 
 [[package]]
