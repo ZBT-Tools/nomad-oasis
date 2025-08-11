@@ -3354,7 +3354,7 @@ requires-dist = [
     { name = "nomad-parser-plugins-database", marker = "extra == 'plugins'", specifier = ">=1.0" },
     { name = "nomad-parser-plugins-electronic", marker = "extra == 'plugins'", specifier = ">=1.0" },
     { name = "nomad-parser-plugins-workflow", marker = "extra == 'plugins'", specifier = ">=1.0" },
-    { name = "nomad-plugin-demo", marker = "extra == 'plugins'", git = "https://github.com/HussainArif12/nomad-plugin-demo.git?rev=84dae74d57101a900330a3212ffee982b19b918f" },
+    { name = "nomad-plugin-demo", marker = "extra == 'plugins'", git = "https://github.com/HussainArif12/nomad-plugin-demo.git?rev=da605e6e377b82aba98093ace6bdfa6f085447c1" },
     { name = "nomad-porous-materials", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-porous-materials.git?rev=522f4a3208077f534f1c5e886527ee2104283d0b" },
     { name = "nomad-schema-plugin-run", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
     { name = "nomad-schema-plugin-simulation-workflow", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
@@ -3688,7 +3688,7 @@ wheels = [
 [[package]]
 name = "nomad-plugin-demo"
 version = "0.1.0"
-source = { git = "https://github.com/HussainArif12/nomad-plugin-demo.git?rev=84dae74d57101a900330a3212ffee982b19b918f#84dae74d57101a900330a3212ffee982b19b918f" }
+source = { git = "https://github.com/HussainArif12/nomad-plugin-demo.git?rev=da605e6e377b82aba98093ace6bdfa6f085447c1#da605e6e377b82aba98093ace6bdfa6f085447c1" }
 dependencies = [
     { name = "nomad-lab" },
     { name = "python-magic-bin", marker = "sys_platform == 'win32'" },
@@ -4185,7 +4185,7 @@ wheels = [
 
 [[package]]
 name = "perovskite-solar-cell-database"
-version = "0.0.0"
+version = "0.1.1"
 source = { git = "https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git?rev=v0.1.1#1fa193054fe7965b37b543a510364bbcaa3f8fa9" }
 dependencies = [
     { name = "lxml-html-clean" },
