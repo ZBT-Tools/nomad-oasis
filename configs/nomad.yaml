@@ -4,7 +4,7 @@ services:
 
 oasis:
   is_oasis: true
-  uses_central_user_management: true
+  uses_central_user_management: false
 
 north:
   jupyterhub_crypt_key: "978bfb2e13a8448a253c629d8dd84ff89587f30e635b753153960930cad9d36d"
@@ -13,13 +13,20 @@ north:
       jupyter:
         image: ghcr.io/zbt-tools/nomad-oasis/jupyter:main
 
+keycloak:
+  server_url: 'http://nomad_oasis_keycloak:8080/auth/'
+  public_server_url: 'http://zbtintranet:1080/keycloak/auth/'
+  realm_name: nomad
+  username: 'admin'
+  password: 'password'
+
 meta:
   deployment: "oasis"
   deployment_url: "https://my-oasis.org/api"
   maintainer_email: "me@my-oasis.org"
 
 logstash:
-  enabled: false
+  enable: false
 
 mongo:
   db_name: nomad_oasis_v1
