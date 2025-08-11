@@ -21,7 +21,7 @@ services:
       timeout: 10s
       retries: 30
       start_period: 30s
-      
+
     ports:
       - 8080:8080
 
@@ -123,7 +123,7 @@ services:
     container_name: nomad_oasis_app
     environment:
       NOMAD_SERVICE: nomad_oasis_app
-      NOMAD_SERVICES_API_PORT: 80
+      NOMAD_SERVICES_API_PORT: 1080
       NOMAD_FS_EXTERNAL_WORKING_DIRECTORY: "$PWD"
       NOMAD_RABBITMQ_HOST: rabbitmq
       NOMAD_ELASTIC_HOST: elastic
@@ -139,6 +139,10 @@ services:
         condition: service_healthy
       north:
         condition: service_started
+      
+      keycloak:
+        condition: service_started
+
     volumes:
       # - ./configs/nomad.yaml:/app/nomad.yaml
       - ./.volumes/fs:/app/.volumes/fs
@@ -189,6 +193,10 @@ services:
       timeout: 10s
       retries: 30
       start_period: 10s
+    
+    depends_on:
+        keycloak:
+          condition: service_started
 
   # nomad logtransfer
   # to enable the logtransfer service run "docker compose --profile with_logtransfer up"
@@ -232,6 +240,8 @@ services:
       worker:
         condition: service_started # TODO: service_healthy
       north:
+        condition: service_healthy
+      keycloak:
         condition: service_healthy
     ports:
       - 1080:1080
