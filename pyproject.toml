@@ -56,7 +56,7 @@ plugins = [
   "nomad-parser-plugins-workflow>=1.0",
   "nomad-parser-plugins-database>=1.0",
   "nomad-greenlight-plugin @ git+https://github.com/ZBT-Tools/nomad-greenlight-plugin.git@8c281b939f0ba506d3cfac0bb975ee56a703b7c7",
-  "nomad-plugin-demo @ git+https://github.com/HussainArif12/nomad-plugin-demo.git@c810cb8ced8d6ae71dd0f592218f01d741ac0080",
+  "nomad-plugin-demo @ git+https://github.com/HussainArif12/nomad-plugin-demo.git@827168477f9eb35cfbf6d0fe03d97429c779054d",
  ]
 jupyter = []
 dev = ["nomad-lab[parsing, infrastructure, dev]>=1.3.4"]
