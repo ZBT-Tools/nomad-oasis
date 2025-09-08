@@ -67,29 +67,29 @@ services:
       start_period: 60s
 
   # the user data db
-  mongo:
-    restart: unless-stopped
-    image: docker.io/mongo:5.0.6
-    container_name: nomad_oasis_mongo
-    environment:
-      - MONGO_DATA_DIR=/data/db
-      - MONGO_LOG_DIR=/dev/null
-    volumes:
-      - mongo:/data/db
-      - ./.volumes/mongo:/backup
-    command: mongod --logpath=/dev/null # --quiet
-    healthcheck:
-      test:
-        - "CMD"
-        - "mongo"
-        - "mongo:27017/test"
-        - "--quiet"
-        - "--eval"
-        - "'db.runCommand({ping:1}).ok'"
-      interval: 10s
-      timeout: 10s
-      retries: 30
-      start_period: 10s
+  # mongo:
+  #   restart: unless-stopped
+  #   image: docker.io/mongo:5.0.6
+  #   container_name: nomad_oasis_mongo
+  #   environment:
+  #     - MONGO_DATA_DIR=/data/db
+  #     - MONGO_LOG_DIR=/dev/null
+  #   volumes:
+  #     - mongo:/data/db
+  #     - ./.volumes/mongo:/backup
+  #   command: mongod --logpath=/dev/null # --quiet
+  #   healthcheck:
+  #     test:
+  #       - "CMD"
+  #       - "mongo"
+  #       - "mongo:27017/test"
+  #       - "--quiet"
+  #       - "--eval"
+  #       - "'db.runCommand({ping:1}).ok'"
+  #     interval: 10s
+  #     timeout: 10s
+  #     retries: 30
+  #     start_period: 10s
 
   # nomad worker (processing)
   worker:
@@ -101,20 +101,24 @@ services:
       NOMAD_SERVICE: nomad_oasis_worker
       NOMAD_RABBITMQ_HOST: rabbitmq
       NOMAD_ELASTIC_HOST: elastic
-      NOMAD_MONGO_HOST: mongo
+      NOMAD_MONGO_HOST: nomad_oasis_mongo-test
+      NOMAD_MONGO_USERNAME: ${NOMAD_MONGO_USERNAME}
+      NOMAD_MONGO_PASSWORD: ${NOMAD_MONGO_PASSWORD}
       NOMAD_LOGSTASH_HOST: logtransfer
     depends_on:
       rabbitmq:
         condition: service_healthy
       elastic:
         condition: service_healthy
-      mongo:
-        condition: service_healthy
+      # mongo:
+      #   condition: service_healthy
     volumes:
-      # - ./configs/nomad.yaml:/app/nomad.yaml
+      - ./configs/nomad.yaml:/app/nomad.yaml
       - ./.volumes/fs:/app/.volumes/fs
     command: python -m celery -A nomad.processing worker -l info -Q celery --max-tasks-per-child 128
-
+    networks:
+      - nomad_oasis_mongo_test
+      - default
   # nomad app (api + proxy)
   app:
     restart: unless-stopped
@@ -127,7 +131,9 @@ services:
       NOMAD_FS_EXTERNAL_WORKING_DIRECTORY: "$PWD"
       NOMAD_RABBITMQ_HOST: rabbitmq
       NOMAD_ELASTIC_HOST: elastic
-      NOMAD_MONGO_HOST: mongo
+      NOMAD_MONGO_HOST: nomad_oasis_mongo-test
+      NOMAD_MONGO_USERNAME: ${NOMAD_MONGO_USERNAME}
+      NOMAD_MONGO_PASSWORD: ${NOMAD_MONGO_PASSWORD}
       NOMAD_LOGSTASH_HOST: logtransfer
       NOMAD_NORTH_HUB_HOST: north
     depends_on:
@@ -135,16 +141,18 @@ services:
         condition: service_healthy
       elastic:
         condition: service_healthy
-      mongo:
-        condition: service_healthy
+      # mongo:
+      #   condition: service_healthy
       north:
         condition: service_started
       
       keycloak:
         condition: service_started
-
+    networks:
+      - nomad_oasis_mongo_test
+      - default
     volumes:
-      # - ./configs/nomad.yaml:/app/nomad.yaml
+      - ./configs/nomad.yaml:/app/nomad.yaml
       - ./.volumes/fs:/app/.volumes/fs
     command: ./run.sh
     healthcheck:
@@ -175,9 +183,11 @@ services:
       NOMAD_FS_EXTERNAL_WORKING_DIRECTORY: "$PWD"
       NOMAD_RABBITMQ_HOST: rabbitmq
       NOMAD_ELASTIC_HOST: elastic
-      NOMAD_MONGO_HOST: mongo
+      NOMAD_MONGO_HOST: nomad_oasis_mongo-test
+      NOMAD_MONGO_USERNAME: ${NOMAD_MONGO_USERNAME}
+      NOMAD_MONGO_PASSWORD: ${NOMAD_MONGO_PASSWORD}
     volumes:
-      # - ./configs/nomad.yaml:/app/nomad.yaml
+      - ./configs/nomad.yaml:/app/nomad.yaml
       - ./.volumes/fs:/app/.volumes/fs
       - /var/run/docker.sock:/var/run/docker.sock
     user: "1000:991"
@@ -194,6 +204,9 @@ services:
       retries: 30
       start_period: 10s
     
+    networks:
+      - nomad_oasis_mongo_test
+      - default
     depends_on:
         keycloak:
           condition: service_started
@@ -208,18 +221,22 @@ services:
     environment:
       NOMAD_SERVICE: nomad_oasis_logtransfer
       NOMAD_ELASTIC_HOST: elastic
-      NOMAD_MONGO_HOST: mongo
+      NOMAD_MONGO_HOST: nomad_oasis_mongo-test
+      NOMAD_MONGO_USERNAME: ${NOMAD_MONGO_USERNAME}
+      NOMAD_MONGO_PASSWORD: ${NOMAD_MONGO_PASSWORD}
     depends_on:
       elastic:
         condition: service_healthy
-      mongo:
-        condition: service_healthy
+      # mongo:
+      #   condition: service_healthy
     volumes:
-      # - ./configs/nomad.yaml:/app/nomad.yaml
+      - ./configs/nomad.yaml:/app/nomad.yaml
       - ./.volumes/fs:/app/.volumes/fs
     command: python -m nomad.cli admin run logtransfer
     profiles: ["with_logtransfer"]
-
+    networks:
+      - nomad_oasis_mongo_test
+      - default
   # nomad proxy (a reverse proxy for nomad)
   proxy:
     restart: unless-stopped
@@ -270,3 +287,7 @@ volumes:
 networks:
   default:
     name: nomad_oasis_network
+
+  nomad_oasis_mongo_test:
+    name: nomad-oasis-mongo-test
+    external: true  
