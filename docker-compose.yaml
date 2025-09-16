@@ -4,6 +4,10 @@ services:
     restart: unless-stopped
     image: quay.io/keycloak/keycloak:16.1.1
     container_name: nomad_oasis_keycloak
+    deploy:
+      resources:
+        limits:
+          memory: 8g
     environment:
       - PROXY_ADDRESS_FORWARDING=true
       - KEYCLOAK_USER=admin
@@ -30,6 +34,10 @@ services:
     restart: unless-stopped
     image: docker.io/rabbitmq:3.11.5-alpine
     container_name: nomad_oasis_rabbitmq
+    deploy:
+      resources:
+        limits:
+          memory: 8g
     environment:
       - RABBITMQ_ERLANG_COOKIE=SWQOKODSQALRPCLNMEQG
       - RABBITMQ_DEFAULT_USER=rabbitmq
@@ -49,6 +57,10 @@ services:
     restart: unless-stopped
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.28
     container_name: nomad_oasis_elastic
+    deploy:
+      resources:
+        limits:
+          memory: 8g
     environment:
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
       - discovery.type=single-node
@@ -97,6 +109,10 @@ services:
     image: ghcr.io/zbt-tools/nomad-oasis:main
     platform: linux/amd64
     container_name: nomad_oasis_worker
+    deploy:
+      resources:
+        limits:
+          memory: 8g
     environment:
       NOMAD_SERVICE: nomad_oasis_worker
       NOMAD_RABBITMQ_HOST: rabbitmq
@@ -125,6 +141,11 @@ services:
     image: ghcr.io/zbt-tools/nomad-oasis:main
     platform: linux/amd64
     container_name: nomad_oasis_app
+    deploy:
+      resources:
+        limits:
+          memory: 8g
+
     environment:
       NOMAD_SERVICE: nomad_oasis_app
       NOMAD_SERVICES_API_PORT: 80
@@ -173,6 +194,10 @@ services:
     image: ghcr.io/zbt-tools/nomad-oasis:main
     platform: linux/amd64
     container_name: nomad_oasis_north
+    deploy:
+      resources:
+        limits:
+          memory: 8g    
     environment:
       NOMAD_SERVICE: nomad_oasis_north
       NOMAD_NORTH_DOCKER_NETWORK: nomad_oasis_network
@@ -218,6 +243,10 @@ services:
     image: ghcr.io/zbt-tools/nomad-oasis:main
     platform: linux/amd64
     container_name: nomad_oasis_logtransfer
+    deploy:
+      resources:
+        limits:
+          memory: 8g
     environment:
       NOMAD_SERVICE: nomad_oasis_logtransfer
       NOMAD_ELASTIC_HOST: elastic
@@ -237,6 +266,7 @@ services:
     networks:
       - nomad_oasis_mongo_test
       - default
+
   # nomad proxy (a reverse proxy for nomad)
   proxy:
     restart: unless-stopped
@@ -270,9 +300,12 @@ services:
     platform: linux/amd64
     container_name: nomad_jupyter_image
     pull_policy: always
-    entrypoint: ["true"]
+    entrypoint: ["true"]      
     deploy:
       replicas: 0 # Ensures the service isn't started
+      resources:
+        limits:
+          memory: 8g
 
 volumes:
   mongo:
