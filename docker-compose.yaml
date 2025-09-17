@@ -145,7 +145,6 @@ services:
       resources:
         limits:
           memory: 8g
-
     environment:
       NOMAD_SERVICE: nomad_oasis_app
       NOMAD_SERVICES_API_PORT: 80
