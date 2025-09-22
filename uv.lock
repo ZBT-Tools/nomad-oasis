@@ -3374,7 +3374,7 @@ requires-dist = [
     { name = "nomad-parser-plugins-database", marker = "extra == 'plugins'", specifier = ">=1.0" },
     { name = "nomad-parser-plugins-electronic", marker = "extra == 'plugins'", specifier = ">=1.0" },
     { name = "nomad-parser-plugins-workflow", marker = "extra == 'plugins'", specifier = ">=1.0" },
-    { name = "nomad-plugin-demo", marker = "extra == 'plugins'", git = "https://github.com/HussainArif12/nomad-plugin-demo.git?rev=4de270f7ab4bf0eebd98b4739fc699b1c86cc8d7" },
+    { name = "nomad-plugin-demo", marker = "extra == 'plugins'", git = "https://github.com/HussainArif12/nomad-plugin-demo.git?rev=23e0487bd936b9e28465532f83a2b3ed772d7ddb" },
     { name = "nomad-porous-materials", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-porous-materials.git?rev=522f4a3208077f534f1c5e886527ee2104283d0b" },
     { name = "nomad-schema-plugin-run", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
     { name = "nomad-schema-plugin-simulation-workflow", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
@@ -3737,7 +3737,7 @@ wheels = [
 [[package]]
 name = "nomad-plugin-demo"
 version = "0.1.0"
-source = { git = "https://github.com/HussainArif12/nomad-plugin-demo.git?rev=4de270f7ab4bf0eebd98b4739fc699b1c86cc8d7#4de270f7ab4bf0eebd98b4739fc699b1c86cc8d7" }
+source = { git = "https://github.com/HussainArif12/nomad-plugin-demo.git?rev=23e0487bd936b9e28465532f83a2b3ed772d7ddb#23e0487bd936b9e28465532f83a2b3ed772d7ddb" }
 dependencies = [
     { name = "nomad-lab" },
     { name = "python-magic-bin", marker = "sys_platform == 'win32'" },
