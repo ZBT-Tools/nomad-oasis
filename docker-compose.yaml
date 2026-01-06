@@ -117,7 +117,7 @@ services:
       NOMAD_SERVICE: nomad_oasis_worker
       NOMAD_RABBITMQ_HOST: rabbitmq
       NOMAD_ELASTIC_HOST: elastic
-      NOMAD_MONGO_HOST: nomad_oasis_mongo-test
+      NOMAD_MONGO_HOST: ${NOMAD_MONGO_HOST}
       NOMAD_MONGO_USERNAME: ${NOMAD_MONGO_USERNAME}
       NOMAD_MONGO_PASSWORD: ${NOMAD_MONGO_PASSWORD}
       NOMAD_LOGSTASH_HOST: logtransfer
@@ -151,7 +151,7 @@ services:
       NOMAD_FS_EXTERNAL_WORKING_DIRECTORY: "$PWD"
       NOMAD_RABBITMQ_HOST: rabbitmq
       NOMAD_ELASTIC_HOST: elastic
-      NOMAD_MONGO_HOST: nomad_oasis_mongo-test
+      NOMAD_MONGO_HOST: ${NOMAD_MONGO_HOST}
       NOMAD_MONGO_USERNAME: ${NOMAD_MONGO_USERNAME}
       NOMAD_MONGO_PASSWORD: ${NOMAD_MONGO_PASSWORD}
       NOMAD_LOGSTASH_HOST: logtransfer
@@ -207,7 +207,7 @@ services:
       NOMAD_FS_EXTERNAL_WORKING_DIRECTORY: "$PWD"
       NOMAD_RABBITMQ_HOST: rabbitmq
       NOMAD_ELASTIC_HOST: elastic
-      NOMAD_MONGO_HOST: nomad_oasis_mongo-test
+      NOMAD_MONGO_HOST: ${NOMAD_MONGO_HOST}
       NOMAD_MONGO_USERNAME: ${NOMAD_MONGO_USERNAME}
       NOMAD_MONGO_PASSWORD: ${NOMAD_MONGO_PASSWORD}
     volumes:
@@ -249,7 +249,7 @@ services:
     environment:
       NOMAD_SERVICE: nomad_oasis_logtransfer
       NOMAD_ELASTIC_HOST: elastic
-      NOMAD_MONGO_HOST: nomad_oasis_mongo-test
+      NOMAD_MONGO_HOST: ${NOMAD_MONGO_HOST}
       NOMAD_MONGO_USERNAME: ${NOMAD_MONGO_USERNAME}
       NOMAD_MONGO_PASSWORD: ${NOMAD_MONGO_PASSWORD}
     depends_on:
