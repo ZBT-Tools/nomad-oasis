@@ -3374,6 +3374,7 @@ plugins = [
     { name = "nomad-schema-plugin-simulation-workflow" },
     { name = "nomad-simulations" },
     { name = "nomad-tdms-plugin" },
+    { name = "nptdms" },
     { name = "pdi-nomad-plugin" },
     { name = "perovskite-solar-cell-database" },
     { name = "pynxtools" },
@@ -3411,6 +3412,7 @@ requires-dist = [
     { name = "nomad-schema-plugin-simulation-workflow", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
     { name = "nomad-simulations", marker = "extra == 'plugins'", specifier = "==0.5.0" },
     { name = "nomad-tdms-plugin", marker = "extra == 'plugins'", git = "https://github.com/HussainArif12/nomad-tdms-plugin.git?rev=2e1ad331dfe334e3fe84dfac4c1f58321c75a1d4" },
+    { name = "nptdms", marker = "extra == 'plugins'" },
     { name = "pdi-nomad-plugin", marker = "extra == 'plugins'", git = "https://github.com/PDI-Berlin/pdi-nomad-plugin.git?rev=65e08d186a5d8966c363db9589d742ef27e62323" },
     { name = "perovskite-solar-cell-database", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git?rev=v0.1.1" },
     { name = "pynxtools", marker = "extra == 'plugins'", specifier = "==0.12.0" },
@@ -3796,6 +3798,15 @@ dependencies = [
     { name = "pydantic" },
     { name = "temporalio" },
 ]
+
+[[package]]
+name = "nptdms"
+version = "1.10.0"
+source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7e/3f/b43b2cc35dc4df743c5b6083f812f02a239cb7ef18c75c1fe0618ca961cf/nptdms-1.10.0.tar.gz", hash = "sha256:3072f349fa70c24a8f5ce504a847992acacc1cf67e312375595d79bab9264cb4", size = 181494, upload-time = "2025-01-22T01:34:24.258Z" }
 
 [[package]]
 name = "numba"
