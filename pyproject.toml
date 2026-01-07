@@ -58,6 +58,7 @@ plugins = [
   "nomad-parser-plugins-atomistic>=1.0",
   "nomad-parser-plugins-workflow>=1.0",
   "nomad-parser-plugins-database>=1.0",
+  "nptdms",
   "nomad-plugin-demo @ git+https://github.com/HussainArif12/nomad-plugin-demo.git@d88dd7255ebac5c32d51c930a961e12d33bf73e4",
   "pdi-nomad-plugin @ git+https://github.com/PDI-Berlin/pdi-nomad-plugin.git@65e08d186a5d8966c363db9589d742ef27e62323",
   "nomad-tdms-plugin @ git+https://github.com/HussainArif12/nomad-tdms-plugin.git@2e1ad331dfe334e3fe84dfac4c1f58321c75a1d4"
