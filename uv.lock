@@ -3373,6 +3373,7 @@ plugins = [
     { name = "nomad-schema-plugin-run" },
     { name = "nomad-schema-plugin-simulation-workflow" },
     { name = "nomad-simulations" },
+    { name = "nomad-tdms-plugin" },
     { name = "pdi-nomad-plugin" },
     { name = "perovskite-solar-cell-database" },
     { name = "pynxtools" },
@@ -3409,6 +3410,7 @@ requires-dist = [
     { name = "nomad-schema-plugin-run", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
     { name = "nomad-schema-plugin-simulation-workflow", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
     { name = "nomad-simulations", marker = "extra == 'plugins'", specifier = "==0.5.0" },
+    { name = "nomad-tdms-plugin", marker = "extra == 'plugins'", git = "https://github.com/HussainArif12/nomad-tdms-plugin.git?rev=2e1ad331dfe334e3fe84dfac4c1f58321c75a1d4" },
     { name = "pdi-nomad-plugin", marker = "extra == 'plugins'", git = "https://github.com/PDI-Berlin/pdi-nomad-plugin.git?rev=65e08d186a5d8966c363db9589d742ef27e62323" },
     { name = "perovskite-solar-cell-database", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git?rev=v0.1.1" },
     { name = "pynxtools", marker = "extra == 'plugins'", specifier = "==0.12.0" },
@@ -3783,6 +3785,16 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/c3/04/cc8af63e950b6673f7356f1614ec043e77c4e1f42099d65d4d1b788719f7/nomad_simulations-0.5.0.tar.gz", hash = "sha256:ff318a49d10f3d73b8a9cc1d8f4c03f75ba996526058f61a51a781232888ef56", size = 656109, upload-time = "2025-10-02T11:03:58.765Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a8/02/5fa1c7df4da3cbb42aca9c8ade1fd26496ee080c44733bebf5e9ccf3ea2e/nomad_simulations-0.5.0-py3-none-any.whl", hash = "sha256:71183cb0c72f702d846cf0b6955e43f02ce2cde701d3b28398ef68594d88a012", size = 129408, upload-time = "2025-10-02T11:03:57.56Z" },
+]
+
+[[package]]
+name = "nomad-tdms-plugin"
+version = "0.0.1"
+source = { git = "https://github.com/HussainArif12/nomad-tdms-plugin.git?rev=2e1ad331dfe334e3fe84dfac4c1f58321c75a1d4#2e1ad331dfe334e3fe84dfac4c1f58321c75a1d4" }
+dependencies = [
+    { name = "nomad-lab" },
+    { name = "pydantic" },
+    { name = "temporalio" },
 ]
 
 [[package]]
