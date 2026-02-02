@@ -62,7 +62,7 @@ plugins = [
   "nomad-plugin-demo @ git+https://github.com/HussainArif12/nomad-plugin-demo.git@d88dd7255ebac5c32d51c930a961e12d33bf73e4",
   "pdi-nomad-plugin @ git+https://github.com/PDI-Berlin/pdi-nomad-plugin.git@65e08d186a5d8966c363db9589d742ef27e62323",
   "nomad-tdms-plugin @ git+https://github.com/HussainArif12/nomad-tdms-plugin.git@701709e8996fdb536a5ea60f3a6885fc6e86155a",
-  "nomad-filter-plugin @ git+https://github.com/ZBT-Tools/nomad-filter-plugin.git@c25f580a11a1f2c378f65b143759b8b276b6d33a"
+  "nomad-filter-plugin @ git+https://github.com/ZBT-Tools/nomad-filter-plugin.git@bc55986a97e223e898cad6dd2f93aebb9ddb8a67"
 ]
 jupyter = ["jupyter-events"]
 gpu-action = []
