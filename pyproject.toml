@@ -58,6 +58,7 @@ plugins = [
   "nomad-parser-plugins-atomistic>=1.0",
   "nomad-parser-plugins-workflow>=1.0",
   "nomad-parser-plugins-database>=1.0",
+  "nomad-filter-plugin @ git+https://github.com/ZBT-Tools/nomad-filter-plugin.git@35522b31c1e16296eeba0093c72919775c62a0d9",
 ]
 jupyter = ["jupyter-events"]
 gpu-action = []
