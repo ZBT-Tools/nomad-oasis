@@ -87,7 +87,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=source=.git,target=.git,type=bind \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --extra plugins \
+    uv sync --extra plugins && \
     uv pip install setuptools
 
 
@@ -109,7 +109,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv run --with nomad-docs --directory docs mkdocs build \
     && mkdir -p built_docs \
-    && cp -r docs/site/* built_docs \
+    && cp -r docs/site/* built_docs && \
     uv pip install setuptools
 
 FROM builder AS gpu_action_builder
@@ -119,7 +119,7 @@ WORKDIR /app
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --extra plugins --extra gpu-action \
+    uv sync --extra plugins --extra gpu-action && \
     uv pip install setuptools
 
 FROM builder AS cpu_action_builder
@@ -129,7 +129,7 @@ WORKDIR /app
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --extra plugins --extra cpu-action \
+    uv sync --extra plugins --extra cpu-action && \
     uv pip install setuptools
 
 FROM base_final AS final
@@ -203,7 +203,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     # Use inexact to avoid removing pre-installed packages in the environment
     # Use no-install-project to skip installing the current project (`nomad-distribution`)
-    uv sync --extra plugins --extra jupyter --no-install-project --inexact \
+    uv sync --extra plugins --extra jupyter --no-install-project --inexact && \
     uv pip install setuptools
 
 
