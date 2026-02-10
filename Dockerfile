@@ -119,8 +119,8 @@ WORKDIR /app
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv pip install setuptools  && \
     uv sync --extra plugins --extra gpu-action && \
-    uv pip install setuptools 
 
 FROM builder AS cpu_action_builder
 
@@ -203,8 +203,8 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     # Use inexact to avoid removing pre-installed packages in the environment
     # Use no-install-project to skip installing the current project (`nomad-distribution`)
+    uv pip install setuptools && \
     uv sync --extra plugins --extra jupyter --no-install-project --inexact && \
-    uv pip install setuptools && uv pip install pkg_resources
 
 
 FROM quay.io/jupyter/base-notebook:${JUPYTER_VERSION} AS jupyter

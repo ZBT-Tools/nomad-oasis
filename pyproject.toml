@@ -75,4 +75,4 @@ prerelease = "explicit"
 exclude = ["gui*", "docs*", "config*"]
 
 [tool.uv.extra-build-dependencies]
-flatdict = ["setuptools"]
+flatdict = ["pkg_resources"]
