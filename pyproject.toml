@@ -71,8 +71,9 @@ extra-index-url = [
 ]
 prerelease = "explicit"
 
+constraint-dependencies = [
+    "flatdict==4.0.0",  # https://github.com/gmr/flatdict/issues/60
+]
+
 [tool.setuptools.packages.find]
 exclude = ["gui*", "docs*", "config*"]
-
-[tool.uv.extra-build-dependencies]
-flatdict = ["pkg_resources"]
