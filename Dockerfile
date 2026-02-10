@@ -88,7 +88,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --extra plugins && \
-    uv pip install setuptools
+    uv pip install setuptools && uv pip install pkg_resources
 
 
 COPY scripts ./scripts
@@ -110,7 +110,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv run --with nomad-docs --directory docs mkdocs build \
     && mkdir -p built_docs \
     && cp -r docs/site/* built_docs && \
-    uv pip install setuptools
+    uv pip install setuptools && uv pip install pkg_resources
 
 FROM builder AS gpu_action_builder
 
@@ -120,7 +120,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --extra plugins --extra gpu-action && \
-    uv pip install setuptools
+    uv pip install setuptools && uv pip install pkg_resources
 
 FROM builder AS cpu_action_builder
 
@@ -130,7 +130,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --extra plugins --extra cpu-action && \
-    uv pip install setuptools
+    uv pip install setuptools && uv pip install pkg_resources
 
 FROM base_final AS final
 
@@ -204,7 +204,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     # Use inexact to avoid removing pre-installed packages in the environment
     # Use no-install-project to skip installing the current project (`nomad-distribution`)
     uv sync --extra plugins --extra jupyter --no-install-project --inexact && \
-    uv pip install setuptools
+    uv pip install setuptools && uv pip install pkg_resources
 
 
 FROM quay.io/jupyter/base-notebook:${JUPYTER_VERSION} AS jupyter
