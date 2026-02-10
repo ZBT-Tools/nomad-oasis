@@ -88,7 +88,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --extra plugins && \
-    uv pip install setuptools && uv pip install pkg_resources
+    uv pip install setuptools 
 
 
 COPY scripts ./scripts
@@ -110,7 +110,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv run --with nomad-docs --directory docs mkdocs build \
     && mkdir -p built_docs \
     && cp -r docs/site/* built_docs && \
-    uv pip install setuptools && uv pip install pkg_resources
+    uv pip install setuptools
 
 FROM builder AS gpu_action_builder
 
@@ -120,7 +120,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --extra plugins --extra gpu-action && \
-    uv pip install setuptools && uv pip install pkg_resources
+    uv pip install setuptools 
 
 FROM builder AS cpu_action_builder
 
@@ -130,7 +130,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --extra plugins --extra cpu-action && \
-    uv pip install setuptools && uv pip install pkg_resources
+    uv pip install setuptools 
 
 FROM base_final AS final
 
