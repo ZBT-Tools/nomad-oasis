@@ -61,7 +61,7 @@ plugins = [
   "nptdms",
   "nomad-plugin-demo @ git+https://github.com/HussainArif12/nomad-plugin-demo.git@d88dd7255ebac5c32d51c930a961e12d33bf73e4",
   "pdi-nomad-plugin @ git+https://github.com/PDI-Berlin/pdi-nomad-plugin.git@65e08d186a5d8966c363db9589d742ef27e62323",
-  "nomad-tdms-plugin @ git+https://github.com/HussainArif12/nomad-tdms-plugin.git@2918db2e60e9fb3a0f20424a88a6c00401c062e9",
+  "nomad-tdms-plugin @ git+https://github.com/HussainArif12/nomad-tdms-plugin.git@bb3897ae50733ff4fcf6028c7780c477e9e26d6c",
   "nomad-filter-plugin @ git+https://github.com/ZBT-Tools/nomad-filter-plugin.git@35522b31c1e16296eeba0093c72919775c62a0d9"
 
 ]
