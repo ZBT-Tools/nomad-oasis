@@ -1,32 +1,32 @@
 services:
-  keycloak:
-    restart: unless-stopped
-    image: quay.io/keycloak/keycloak:16.1.1
-    container_name: nomad_oasis_keycloak
-    deploy:
-      resources:
-        limits:
-          memory: 8g
-    environment:
-      - PROXY_ADDRESS_FORWARDING=true
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=password
-      - KEYCLOAK_FRONTEND_URL=http://172.16.134.9:1080/keycloak/auth
-      - KEYCLOAK_IMPORT="/tmp/nomad-realm.json"
-    command:
-      - "-Dkeycloak.import=/tmp/nomad-realm.json -Dkeycloak.migration.strategy=IGNORE_EXISTING"
-    volumes:
-      - keycloak:/opt/jboss/keycloak/standalone/data
-      - ./configs/nomad-realm.json:/tmp/nomad-realm.json
-    healthcheck:
-      test: [ "CMD", "curl", "--fail", "--silent", "http://127.0.0.1:9990/health/live" ]
-      interval: 10s
-      timeout: 10s
-      retries: 30
-      start_period: 30s
+  # keycloak:
+  #   restart: unless-stopped
+  #   image: quay.io/keycloak/keycloak:16.1.1
+  #   container_name: nomad_oasis_keycloak
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         memory: 8g
+  #   environment:
+  #     - PROXY_ADDRESS_FORWARDING=true
+  #     - KEYCLOAK_USER=admin
+  #     - KEYCLOAK_PASSWORD=password
+  #     - KEYCLOAK_FRONTEND_URL=172.16.134.9:1080/keycloak/auth
+  #     - KEYCLOAK_IMPORT="/tmp/nomad-realm.json"
+  #   command:
+  #     - "-Dkeycloak.import=/tmp/nomad-realm.json -Dkeycloak.migration.strategy=IGNORE_EXISTING"
+  #   volumes:
+  #     - keycloak:/opt/jboss/keycloak/standalone/data
+  #     - ./configs/nomad-realm.json:/tmp/nomad-realm.json
+  #   healthcheck:
+  #     test: [ "CMD", "curl", "--fail", "--silent", "http://127.0.0.1:9990/health/live" ]
+  #     interval: 10s
+  #     timeout: 10s
+  #     retries: 30
+  #     start_period: 30s
 
-    ports:
-      - 8080:8080
+  #   ports:
+  #     - 8080:8080
 
   # broker for celery
   rabbitmq:
@@ -152,7 +152,7 @@ services:
         condition: service_healthy
     volumes:
       - ./configs/nomad.yaml:/app/nomad.yaml
-      - ./.volumes/fs:/app/.volumes/fs
+      - /media/daten/nomad-oasis/.volumes/fs:/app/.volumes/fs
     command: python -m nomad.cli admin run action-internal-worker
     healthcheck:
       # See https://keithtenzer.com/temporal/Deploying_Temporal_Worker_on_Kubernetes/#liveliness-and-readiness-probes
@@ -163,7 +163,7 @@ services:
       retries: 5
       start_period: 15s
     deploy:
-      replicas: 4
+      replicas: 1
       resources:
         limits:
           cpus: "4.0" # Maximum 4 CPU cores
@@ -208,7 +208,7 @@ services:
   #       condition: service_healthy
   #   volumes:
   #     # - ./configs/nomad.yaml:/app/nomad.yaml
-  #     - ./.volumes/fs:/app/.volumes/fs
+  #     -/media/daten/nomad-oasis/.volumes//fs:/app/.volumes/fs
   #   command: python -m nomad.cli admin run action-gpu-worker
 
   # # nomad cpu worker (actions)
@@ -243,7 +243,7 @@ services:
   #       condition: service_healthy
   #   volumes:
   #     # - ./configs/nomad.yaml:/app/nomad.yaml
-  #     - ./.volumes/fs:/app/.volumes/fs
+  #     -/media/daten/nomad-oasis/.volumes//fs:/app/.volumes/fs
   #   command: python -m nomad.cli admin run action-cpu-worker
 
   # nomad app (api + proxy)
@@ -277,7 +277,7 @@ services:
         condition: service_healthy
     volumes:
       - ./configs/nomad.yaml:/app/nomad.yaml
-      - ./.volumes/fs:/app/.volumes/fs
+      - /media/daten/nomad-oasis/.volumes/fs:/app/.volumes/fs
     command: ./run.sh
     healthcheck:
       test:
@@ -315,7 +315,7 @@ services:
       - ./.env
     volumes:
       - ./configs/nomad.yaml:/app/nomad.yaml
-      - ./.volumes/fs:/app/.volumes/fs
+      - /media/daten/nomad-oasis/.volumes/fs:/app/.volumes/fs
       - /var/run/docker.sock:/var/run/docker.sock
     user: "1000:991"
     command: python -m nomad.cli admin run hub
@@ -349,7 +349,7 @@ services:
         condition: service_healthy
     volumes:
       - ./configs/nomad.yaml:/app/nomad.yaml
-      - ./.volumes/fs:/app/.volumes/fs
+      - /media/daten/nomad-oasis/.volumes/fs:/app/.volumes/fs
     command: python -m nomad.cli admin run logtransfer
     profiles: ["with_logtransfer"]
 
