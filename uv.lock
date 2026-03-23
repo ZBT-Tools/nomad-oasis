@@ -3437,7 +3437,7 @@ requires-dist = [
     { name = "eelsdbconverter", marker = "extra == 'plugins'", git = "https://github.com/nomad-coe/nomad-parser-eelsdb.git?rev=entry-point" },
     { name = "jupyter-events", marker = "extra == 'jupyter'" },
     { name = "nomad-aitoolkit", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git?rev=b203f8eb28dc4b6771a39d5c5b7ad3d9d8583ac8" },
-    { name = "nomad-filter-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-filter-plugin.git?rev=0a3cd51b20e9af904c37d6b88da0d0ea0f562bdd" },
+    { name = "nomad-filter-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-filter-plugin.git?rev=4699bbff0d84480900880d183a6bd32ff995cdba" },
     { name = "nomad-lab", extras = ["dev", "infrastructure"], marker = "extra == 'dev'" },
     { name = "nomad-lab", extras = ["infrastructure"], specifier = ">=1.4.0" },
     { name = "nomad-normalizer-plugin-bandstructure", marker = "extra == 'plugins'", specifier = ">=1.0" },
@@ -3488,7 +3488,7 @@ wheels = [
 [[package]]
 name = "nomad-filter-plugin"
 version = "0.1.0"
-source = { git = "https://github.com/ZBT-Tools/nomad-filter-plugin.git?rev=0a3cd51b20e9af904c37d6b88da0d0ea0f562bdd#0a3cd51b20e9af904c37d6b88da0d0ea0f562bdd" }
+source = { git = "https://github.com/ZBT-Tools/nomad-filter-plugin.git?rev=4699bbff0d84480900880d183a6bd32ff995cdba#4699bbff0d84480900880d183a6bd32ff995cdba" }
 dependencies = [
     { name = "nomad-lab" },
     { name = "pydantic" },
