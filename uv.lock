@@ -3455,7 +3455,7 @@ requires-dist = [
     { name = "nomad-schema-plugin-run", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
     { name = "nomad-schema-plugin-simulation-workflow", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
     { name = "nomad-simulations", marker = "extra == 'plugins'", specifier = "==0.5.0" },
-    { name = "nomad-tdms-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-tdms-plugin.git?rev=d78ff13683f82951e09545f265189a3a5c1b3f0e" },
+    { name = "nomad-tdms-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-tdms-plugin.git?rev=53d609ce28149fdcca7df95b1755de26999404fb" },
     { name = "nptdms", marker = "extra == 'plugins'" },
     { name = "pdi-nomad-plugin", marker = "extra == 'plugins'", git = "https://github.com/PDI-Berlin/pdi-nomad-plugin.git?rev=65e08d186a5d8966c363db9589d742ef27e62323" },
     { name = "perovskite-solar-cell-database", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git?rev=v0.1.1" },
@@ -3850,7 +3850,7 @@ wheels = [
 [[package]]
 name = "nomad-tdms-plugin"
 version = "0.0.1"
-source = { git = "https://github.com/ZBT-Tools/nomad-tdms-plugin.git?rev=d78ff13683f82951e09545f265189a3a5c1b3f0e#d78ff13683f82951e09545f265189a3a5c1b3f0e" }
+source = { git = "https://github.com/ZBT-Tools/nomad-tdms-plugin.git?rev=53d609ce28149fdcca7df95b1755de26999404fb#53d609ce28149fdcca7df95b1755de26999404fb" }
 dependencies = [
     { name = "nomad-lab" },
     { name = "pydantic" },
