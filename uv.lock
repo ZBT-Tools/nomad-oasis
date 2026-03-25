@@ -3437,7 +3437,7 @@ requires-dist = [
     { name = "eelsdbconverter", marker = "extra == 'plugins'", git = "https://github.com/nomad-coe/nomad-parser-eelsdb.git?rev=entry-point" },
     { name = "jupyter-events", marker = "extra == 'jupyter'" },
     { name = "nomad-aitoolkit", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git?rev=b203f8eb28dc4b6771a39d5c5b7ad3d9d8583ac8" },
-    { name = "nomad-filter-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-filter-plugin.git?rev=f8963e0e4a0a481409a3cec31d9c7eae5f69cd5c" },
+    { name = "nomad-filter-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-filter-plugin.git?rev=e9b4df575ad504d9779f7d541ceff87926200d15" },
     { name = "nomad-lab", extras = ["dev", "infrastructure"], marker = "extra == 'dev'" },
     { name = "nomad-lab", extras = ["infrastructure"], specifier = ">=1.4.0" },
     { name = "nomad-normalizer-plugin-bandstructure", marker = "extra == 'plugins'", specifier = ">=1.0" },
@@ -3450,7 +3450,7 @@ requires-dist = [
     { name = "nomad-parser-plugins-database", marker = "extra == 'plugins'", specifier = ">=1.0" },
     { name = "nomad-parser-plugins-electronic", marker = "extra == 'plugins'", specifier = ">=1.0" },
     { name = "nomad-parser-plugins-workflow", marker = "extra == 'plugins'", specifier = ">=1.0" },
-    { name = "nomad-plugin-demo", marker = "extra == 'plugins'", git = "https://github.com/HussainArif12/nomad-plugin-demo.git?rev=d88dd7255ebac5c32d51c930a961e12d33bf73e4" },
+    { name = "nomad-plugin-demo", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-plugin-demo.git?rev=d88dd7255ebac5c32d51c930a961e12d33bf73e4" },
     { name = "nomad-porous-materials", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-porous-materials.git?rev=522f4a3208077f534f1c5e886527ee2104283d0b" },
     { name = "nomad-schema-plugin-run", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
     { name = "nomad-schema-plugin-simulation-workflow", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
@@ -3488,7 +3488,7 @@ wheels = [
 [[package]]
 name = "nomad-filter-plugin"
 version = "0.1.0"
-source = { git = "https://github.com/ZBT-Tools/nomad-filter-plugin.git?rev=f8963e0e4a0a481409a3cec31d9c7eae5f69cd5c#f8963e0e4a0a481409a3cec31d9c7eae5f69cd5c" }
+source = { git = "https://github.com/ZBT-Tools/nomad-filter-plugin.git?rev=e9b4df575ad504d9779f7d541ceff87926200d15#e9b4df575ad504d9779f7d541ceff87926200d15" }
 dependencies = [
     { name = "nomad-lab" },
     { name = "pydantic" },
@@ -3785,7 +3785,7 @@ wheels = [
 [[package]]
 name = "nomad-plugin-demo"
 version = "0.1.0"
-source = { git = "https://github.com/HussainArif12/nomad-plugin-demo.git?rev=d88dd7255ebac5c32d51c930a961e12d33bf73e4#d88dd7255ebac5c32d51c930a961e12d33bf73e4" }
+source = { git = "https://github.com/ZBT-Tools/nomad-plugin-demo.git?rev=d88dd7255ebac5c32d51c930a961e12d33bf73e4#d88dd7255ebac5c32d51c930a961e12d33bf73e4" }
 dependencies = [
     { name = "nomad-lab" },
     { name = "python-magic-bin", marker = "sys_platform == 'win32'" },
