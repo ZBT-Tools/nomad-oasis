@@ -3524,7 +3524,7 @@ source = { git = "https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git?rev=b203f8
 [[package]]
 name = "nomad-avl-fire-rdm"
 version = "0.1.0"
-source = { git = "https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git?rev=b3fb6a95bf2b92694a48a8ef301520447a655f7d#b3fb6a95bf2b92694a48a8ef301520447a655f7d" }
+source = { git = "https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git?rev=03a64c13e5a0990f1d645888a2a52e957021bb68#03a64c13e5a0990f1d645888a2a52e957021bb68" }
 dependencies = [
     { name = "nomad-lab" },
     { name = "pydantic" },
@@ -3593,7 +3593,7 @@ requires-dist = [
     { name = "jupyter-events", marker = "extra == 'jupyter'" },
     { name = "lxml", marker = "extra == 'plugins'" },
     { name = "nomad-aitoolkit", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git?rev=b203f8eb28dc4b6771a39d5c5b7ad3d9d8583ac8" },
-    { name = "nomad-avl-fire-rdm", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git?rev=b3fb6a95bf2b92694a48a8ef301520447a655f7d" },
+    { name = "nomad-avl-fire-rdm", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git?rev=03a64c13e5a0990f1d645888a2a52e957021bb68" },
     { name = "nomad-filter-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-filter-plugin.git?rev=e9b4df575ad504d9779f7d541ceff87926200d15" },
     { name = "nomad-lab", extras = ["dev", "infrastructure"], marker = "extra == 'dev'" },
     { name = "nomad-lab", extras = ["infrastructure"], specifier = ">=1.4.0" },
