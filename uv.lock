@@ -187,7 +187,7 @@ wheels = [
 [[package]]
 name = "avl-fire-rdm"
 version = "0.1.0"
-source = { git = "https://github.com/ZBT-Tools/AVL-FIRE-RDM.git#1cb6819a9058af86cecf9599f0e7abd691d5df34" }
+source = { git = "https://github.com/ZBT-Tools/AVL-FIRE-RDM.git?rev=78f235ff65481fb3a282155425747b47ab1890f8#78f235ff65481fb3a282155425747b47ab1890f8" }
 dependencies = [
     { name = "h5py" },
     { name = "lxml" },
@@ -3588,7 +3588,7 @@ plugins = [
 
 [package.metadata]
 requires-dist = [
-    { name = "avl-fire-rdm", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/AVL-FIRE-RDM.git" },
+    { name = "avl-fire-rdm", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/AVL-FIRE-RDM.git?rev=78f235ff65481fb3a282155425747b47ab1890f8" },
     { name = "eelsdbconverter", marker = "extra == 'plugins'", git = "https://github.com/nomad-coe/nomad-parser-eelsdb.git?rev=entry-point" },
     { name = "jupyter-events", marker = "extra == 'jupyter'" },
     { name = "lxml", marker = "extra == 'plugins'" },
