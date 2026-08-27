@@ -5884,16 +5884,16 @@ wheels = [
 
 [[package]]
 name = "pynxtools-xps"
-version = "0.5.4"
+version = "0.6.2"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "igor2" },
     { name = "jsonschema" },
     { name = "pynxtools" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/a1/2a/30325f4e0d3fe365b0b92b75dfe188f98a83b14a086c4cda957fef34e842/pynxtools_xps-0.5.4.tar.gz", hash = "sha256:2ec0aad533b41a0ce4fc837e2449d1e197bd145f4815eb563c516efce461926a", size = 5501872, upload-time = "2025-10-17T17:21:36.197Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f4/d9/6671e4b98224d3cb0e521eda30c302d1a7888b2d478d370fa5b98e3afd87/pynxtools_xps-0.6.2.tar.gz", hash = "sha256:2e11ed92695ed6042713fde2393056394911db605cc5be7ce1a4e15e42537a85", size = 5516149, upload-time = "2026-04-09T16:18:01.519Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/62/cf/48d192bfccbc18d328eb65a16601424dbb8578a05d10288089d0253e7c41/pynxtools_xps-0.5.4-py3-none-any.whl", hash = "sha256:9f3cbafa6455591b17561441d52b47e3e7319c3fe584cb413e6d63d8d903dceb", size = 5578959, upload-time = "2025-10-17T17:21:34.221Z" },
+    { url = "https://files.pythonhosted.org/packages/58/2a/c7ccaae7bb6657f20da8eeb98b2cb8be0d55de5cdeda371ff4bc8be8a699/pynxtools_xps-0.6.2-py3-none-any.whl", hash = "sha256:10730ba2070ba62463e44a4ecaba1a5940c62ad27dad4d7a0661ce2e15e4c387", size = 5610485, upload-time = "2026-04-09T16:17:59.454Z" },
 ]
 
 [[package]]
