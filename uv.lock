@@ -5792,14 +5792,14 @@ wheels = [
 
 [[package]]
 name = "pynxtools-ellips"
-version = "0.1.1"
+version = "0.1.3"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "pynxtools" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/94/64/e1f06a86a2b19a854a83aa2dc320c914808a5a3957f09e316411a5ff0cc6/pynxtools_ellips-0.1.1.tar.gz", hash = "sha256:f50e4ac6c460f5aa9ed476e590af52b81a55df84860f59e00509547e271237c6", size = 160155, upload-time = "2025-10-17T16:43:25.987Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/20/3b/1d80c0fb65d4a75bf1f9c671b341c81094c785831f678d8661b0bad285d9/pynxtools_ellips-0.1.3.tar.gz", hash = "sha256:94ecbb437fe4b36babe075a501ec4e3781ddfd13f541092530a275e32baf659e", size = 131543, upload-time = "2026-04-09T07:31:46.585Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/55/78/e1f04d89c531abe2d12c6521a888a0be1b683eedb7c8f44dc78cb9c2b9bb/pynxtools_ellips-0.1.1-py3-none-any.whl", hash = "sha256:e8caea4374940290530999421500b7152286fd0fd88e699af5e93b5c1bb1c0ba", size = 166441, upload-time = "2025-10-17T16:43:24.581Z" },
+    { url = "https://files.pythonhosted.org/packages/8c/3b/22186d4ea5e062bc4c7415675961d490dcb58ee439892c9310c3bae3173b/pynxtools_ellips-0.1.3-py3-none-any.whl", hash = "sha256:80b9e6170444f6c85e69fc3e9ef0d41725c702198f098cf21b60bf171ba7f541", size = 139877, upload-time = "2026-04-09T07:31:44.957Z" },
 ]
 
 [[package]]
