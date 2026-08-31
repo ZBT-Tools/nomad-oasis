@@ -3897,7 +3897,7 @@ requires-dist = [
     { name = "nomad-schema-plugin-run", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
     { name = "nomad-schema-plugin-simulation-workflow", marker = "extra == 'plugins'", specifier = ">=1.0.1" },
     { name = "nomad-simulations", marker = "extra == 'plugins'", specifier = "==0.5.0" },
-    { name = "nomad-tdms-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-tdms-plugin.git?rev=236a641f5b9dc6ae27f2a286f150c8ca0e481088" },
+    { name = "nomad-tdms-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-tdms-plugin.git?rev=65f6d6e82d057b55a0e85d7c8e028c6b06b45b9d" },
     { name = "nptdms", marker = "extra == 'plugins'" },
     { name = "paramiko", marker = "extra == 'plugins'" },
     { name = "pdi-nomad-plugin", marker = "extra == 'plugins'", git = "https://github.com/PDI-Berlin/pdi-nomad-plugin.git?rev=65e08d186a5d8966c363db9589d742ef27e62323" },
@@ -4278,7 +4278,7 @@ wheels = [
 [[package]]
 name = "nomad-tdms-plugin"
 version = "0.0.1"
-source = { git = "https://github.com/ZBT-Tools/nomad-tdms-plugin.git?rev=236a641f5b9dc6ae27f2a286f150c8ca0e481088#236a641f5b9dc6ae27f2a286f150c8ca0e481088" }
+source = { git = "https://github.com/ZBT-Tools/nomad-tdms-plugin.git?rev=65f6d6e82d057b55a0e85d7c8e028c6b06b45b9d#65f6d6e82d057b55a0e85d7c8e028c6b06b45b9d" }
 dependencies = [
     { name = "nomad-lab" },
     { name = "pydantic" },
