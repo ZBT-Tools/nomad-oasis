@@ -60,7 +60,7 @@ plugins = [
   "nomad-parser-plugins-database>=1.0",
   "nptdms",
   "pdi-nomad-plugin @ git+https://github.com/PDI-Berlin/pdi-nomad-plugin.git@65e08d186a5d8966c363db9589d742ef27e62323",
-  "nomad-tdms-plugin @ git+https://github.com/ZBT-Tools/nomad-tdms-plugin.git@53d609ce28149fdcca7df95b1755de26999404fb",
+  "nomad-tdms-plugin @ git+https://github.com/ZBT-Tools/nomad-tdms-plugin.git@236a641f5b9dc6ae27f2a286f150c8ca0e481088",
   "nomad-avl-fire-rdm @ git+https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git@d7c2fcb58eb68aaf6437a67035fc45a935c64aa3",
   "paramiko",
   "lxml",
