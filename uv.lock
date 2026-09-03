@@ -2439,7 +2439,7 @@ wheels = [
 
 [[package]]
 name = "kikuchipy"
-version = "0.11.3"
+version = "0.13.0"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "dask", extra = ["array"] },
@@ -2455,7 +2455,7 @@ dependencies = [
     { name = "numpy", version = "1.26.4", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
     { name = "numpy", version = "2.3.5", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "orix" },
-    { name = "pooch" },
+    { name = "packaging" },
     { name = "pyyaml" },
     { name = "rosettasciio" },
     { name = "scikit-image", version = "0.25.2", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.11'" },
@@ -2464,10 +2464,11 @@ dependencies = [
     { name = "scipy", version = "1.15.3", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.11'" },
     { name = "scipy", version = "1.16.2", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "tqdm" },
+    { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/6d/c6/3ecef52ec4b969afa7d1107768d3663f8646f1f8c55c87bf17c336185a9a/kikuchipy-0.11.3.tar.gz", hash = "sha256:aa452e904f088c17ed5e351e19ce4d25233e90e04e1e6f3591603fc8d3f3ea42", size = 22240624, upload-time = "2025-12-17T20:28:22.107Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/63/d5/7199e39e6e45429be4dbacfc8c0e5e026433afa9b7f2c39f72bc61f61b8d/kikuchipy-0.13.0.tar.gz", hash = "sha256:ab706cfd370d463ab0ba424db80c89b8fc35f3fc352b1d051ee3c0d52ee50e3e", size = 21001908, upload-time = "2026-06-14T12:58:52.908Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/86/f4/03a5788265d0554cd71665a26bac90a5d6ea7045383be2bc427d5828f852/kikuchipy-0.11.3-py3-none-any.whl", hash = "sha256:50808866f80b3a7cfdce10f0bf0622dee02ea9afa96f2dc74c5445d8d02dc67e", size = 1747151, upload-time = "2025-12-17T20:28:19.924Z" },
+    { url = "https://files.pythonhosted.org/packages/2d/1f/f8f651969bd7c12956c2a14963afb8c3de4f1c2528e3814e6df550aee17a/kikuchipy-0.13.0-py3-none-any.whl", hash = "sha256:5e03dffa1162c0c3f031a5cca86338e32b6259459f6fb779fd117c3a0b478fc3", size = 1799201, upload-time = "2026-06-14T12:58:50.553Z" },
 ]
 
 [[package]]
