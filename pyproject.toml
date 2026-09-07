@@ -59,6 +59,7 @@ plugins = [
   "nomad-parser-plugins-workflow>=1.0",
   "nomad-parser-plugins-database>=1.0",
   "nptdms",
+  "nomad-greenlight-plugin @ git+https://github.com/ZBT-Tools/nomad-greenlight-plugin.git@8c281b939f0ba506d3cfac0bb975ee56a703b7c7",
   "nomad-tdms-plugin @ git+https://github.com/ZBT-Tools/nomad-tdms-plugin.git@8f38d4a47b66e6308e83da9d673cc03c8dae08ae",
   "nomad-avl-fire-rdm @ git+https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git@d7c2fcb58eb68aaf6437a67035fc45a935c64aa3",
   "paramiko",
