@@ -3,7 +3,7 @@ name: Build and publish docker images
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "for_plugin_test"]
     # Publish semver tags as releases.
     tags: ["v*.*.*"]
   pull_request:
@@ -157,7 +157,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}${{ matrix.image_suffix }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}${{ github.ref_name == 'for_plugin_test' && '-for-plugin-test' || '' }}${{ matrix.image_suffix }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
