@@ -3867,7 +3867,7 @@ requires-dist = [
     { name = "lxml", marker = "extra == 'plugins'" },
     { name = "nomad-aitoolkit", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git?rev=b203f8eb28dc4b6771a39d5c5b7ad3d9d8583ac8" },
     { name = "nomad-avl-fire-rdm", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git?rev=d7c2fcb58eb68aaf6437a67035fc45a935c64aa3" },
-    { name = "nomad-filter-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-filter-plugin?rev=976e357263c216148028abf14b04a0e63763e795" },
+    { name = "nomad-filter-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-filter-plugin?rev=b4c57f93651885843c42a2cafff0bbc5cba7a2e6" },
     { name = "nomad-greenlight-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-greenlight-plugin.git?rev=8c281b939f0ba506d3cfac0bb975ee56a703b7c7" },
     { name = "nomad-lab", extras = ["dev", "infrastructure"], marker = "extra == 'dev'" },
     { name = "nomad-lab", extras = ["infrastructure"], specifier = ">=1.4.0" },
@@ -3919,7 +3919,7 @@ wheels = [
 [[package]]
 name = "nomad-filter-plugin"
 version = "0.1.0"
-source = { git = "https://github.com/ZBT-Tools/nomad-filter-plugin?rev=976e357263c216148028abf14b04a0e63763e795#976e357263c216148028abf14b04a0e63763e795" }
+source = { git = "https://github.com/ZBT-Tools/nomad-filter-plugin?rev=b4c57f93651885843c42a2cafff0bbc5cba7a2e6#b4c57f93651885843c42a2cafff0bbc5cba7a2e6" }
 dependencies = [
     { name = "nomad-lab" },
     { name = "pydantic" },
