@@ -3826,6 +3826,7 @@ plugins = [
     { name = "lxml" },
     { name = "nomad-aitoolkit" },
     { name = "nomad-avl-fire-rdm" },
+    { name = "nomad-filter-plugin" },
     { name = "nomad-greenlight-plugin" },
     { name = "nomad-normalizer-plugin-bandstructure" },
     { name = "nomad-normalizer-plugin-dos" },
@@ -3866,6 +3867,7 @@ requires-dist = [
     { name = "lxml", marker = "extra == 'plugins'" },
     { name = "nomad-aitoolkit", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git?rev=b203f8eb28dc4b6771a39d5c5b7ad3d9d8583ac8" },
     { name = "nomad-avl-fire-rdm", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git?rev=d7c2fcb58eb68aaf6437a67035fc45a935c64aa3" },
+    { name = "nomad-filter-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-filter-plugin?rev=aba6f0c1ec28220552203d67217e01d3371656e2" },
     { name = "nomad-greenlight-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-greenlight-plugin.git?rev=8c281b939f0ba506d3cfac0bb975ee56a703b7c7" },
     { name = "nomad-lab", extras = ["dev", "infrastructure"], marker = "extra == 'dev'" },
     { name = "nomad-lab", extras = ["infrastructure"], specifier = ">=1.4.0" },
@@ -3912,6 +3914,16 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/47/5d/5f6c2d7ef225a92f326103d30a6333a4bc71030f344981d15b6e31b0ec5a/nomad_dos_fingerprints-1.0.2.tar.gz", hash = "sha256:cc70624ee7f680d471e00fa31fccbc1c0bfec6410fa7f980dbaeaff2603249fe", size = 11386, upload-time = "2024-09-11T16:06:43.134Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7f/5d/f0604fa8e642562118ad330088959623ba84cb56c965a23b34c8e2ce225a/nomad_dos_fingerprints-1.0.2-py3-none-any.whl", hash = "sha256:cc01ed88d35f751ef13c89e75faeea16fef16ab8363b3a6fcb4f810afacb6338", size = 10593, upload-time = "2024-09-11T16:06:41.978Z" },
+]
+
+[[package]]
+name = "nomad-filter-plugin"
+version = "0.1.0"
+source = { git = "https://github.com/ZBT-Tools/nomad-filter-plugin?rev=aba6f0c1ec28220552203d67217e01d3371656e2#aba6f0c1ec28220552203d67217e01d3371656e2" }
+dependencies = [
+    { name = "nomad-lab" },
+    { name = "pydantic" },
+    { name = "temporalio" },
 ]
 
 [[package]]
