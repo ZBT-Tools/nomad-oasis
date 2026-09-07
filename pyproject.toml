@@ -66,7 +66,7 @@ plugins = [
   "lxml",
   "python-dotenv",
   "avl-fire-rdm @ git+https://github.com/ZBT-Tools/AVL-FIRE-RDM.git@78f235ff65481fb3a282155425747b47ab1890f8",
-  "nomad-filter-plugin @ git+https://github.com/ZBT-Tools/nomad-filter-plugin@976e357263c216148028abf14b04a0e63763e795"
+  "nomad-filter-plugin @ git+https://github.com/ZBT-Tools/nomad-filter-plugin@b4c57f93651885843c42a2cafff0bbc5cba7a2e6"
 ]
 jupyter = ["jupyter-events"]
 gpu-action = []
