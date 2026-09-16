@@ -1378,8 +1378,24 @@ wheels = [
 ]
 
 [[package]]
+name = "fairmat-readers-transmission"
+version = "0.0.3"
+source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
+dependencies = [
+    { name = "numpy", version = "1.26.4", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.3.5", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "pandas" },
+    { name = "pint", version = "0.24.4", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "pint", version = "0.25", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.11'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/df/7d/86c33bbbd9fce8c57951e2aa903b07a8dfcddb0c8e4919e3e4572657a940/fairmat_readers_transmission-0.0.3.tar.gz", hash = "sha256:bf08ae57d7fe5ad2b00b9ff9653798a3e98c63f4662567dfdb3400235343ff85", size = 47259, upload-time = "2026-06-25T11:34:11.366Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fa/64/8fbc374f8253fcb1d0f1c3d367b895fe4f67fe55e04de51fc96c3a89a23e/fairmat_readers_transmission-0.0.3-py3-none-any.whl", hash = "sha256:a75a162c5eb23ebc95411ec83b20b8a90202a5454f5f24f3e0b22a3808d4fcbb", size = 17644, upload-time = "2026-06-25T11:34:10.237Z" },
+]
+
+[[package]]
 name = "fairmat-readers-xrd"
-version = "0.0.8"
+version = "0.0.10"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "numpy", version = "1.26.4", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
@@ -1388,9 +1404,9 @@ dependencies = [
     { name = "pint", version = "0.25", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "xmltodict" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f6/9f/6c8ecbac08b98821fd5e7c71fed480d19ac2769107f4d23211d4c22b9637/fairmat_readers_xrd-0.0.8.tar.gz", hash = "sha256:cd4f996e6eca6677b91f2864cc1c5a2704025721d72bd92475e990898a07f105", size = 6900676, upload-time = "2026-01-05T11:53:41.27Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/dd/cf/9570c4aa594f95f03d3528651a4dea5538bf83ada4ab9c34674de9a00c80/fairmat_readers_xrd-0.0.10.tar.gz", hash = "sha256:fa1153c5bce0ae72167335845350bfdfb1901ee33dadd9194332bd41b201905a", size = 6904602, upload-time = "2026-09-03T12:59:26Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/2f/85/690b40bf3fc342db5d55cee799405b5baad4047c48f34d4e0d0500de2419/fairmat_readers_xrd-0.0.8-py3-none-any.whl", hash = "sha256:19d8d7333cf248846515a005dd687e0cbd33b6d604c42cd7ca6cf365d39b6aa8", size = 28721, upload-time = "2026-01-05T11:53:40.089Z" },
+    { url = "https://files.pythonhosted.org/packages/ab/59/4d4e892ebbd797a70b967b700dcce99c523f50c64180d03e18008e2d664b/fairmat_readers_xrd-0.0.10-py3-none-any.whl", hash = "sha256:33abf807faf83c99f27682e3df1344dfb37fecda68b25973438f6be5ac4b1591", size = 28738, upload-time = "2026-09-03T12:59:24.396Z" },
 ]
 
 [[package]]
@@ -1429,6 +1445,15 @@ source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages
 sdist = { url = "https://files.pythonhosted.org/packages/2d/18/7881a99ba5244bfc82f06017316ffe93217dbbbcfa52b887caa1d4f2a6d3/fasteners-0.20.tar.gz", hash = "sha256:55dce8792a41b56f727ba6e123fcaee77fd87e638a6863cec00007bfea84c8d8", size = 25087, upload-time = "2025-08-11T10:19:37.785Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/51/ac/e5d886f892666d2d1e5cb8c1a41146e1d79ae8896477b1153a21711d3b44/fasteners-0.20-py3-none-any.whl", hash = "sha256:9422c40d1e350e4259f509fb2e608d6bc43c0136f79a00db1b49046029d0b3b7", size = 18702, upload-time = "2025-08-11T10:19:35.716Z" },
+]
+
+[[package]]
+name = "fastjsonschema"
+version = "2.22.2"
+source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/33/a4/9473c7c3b87009d9c1d74034e4a0f6a35ff0d42dd0f9866d0c3ec4e9217b/fastjsonschema-2.22.2.tar.gz", hash = "sha256:72064e12356a7d6ef02165be2946b9abadbdf238536e07eb587e3dbaa33099cf", size = 385171, upload-time = "2026-08-15T19:47:08.853Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/49/82/2755c7c982086f00d4dab85bc120ec35045a9fc2191893a6ce79afe94443/fastjsonschema-2.22.2-py3-none-any.whl", hash = "sha256:0fb3915616adac85ccfdd737d26be1089845d2019819505b42d39888458f74d4", size = 27413, upload-time = "2026-08-15T19:47:04.406Z" },
 ]
 
 [[package]]
@@ -2333,6 +2358,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/19/74/a633ee74eb36c44aa6d1095e7cc5569bebf04342ee146178e2d36600708b/jsonschema_specifications-2025.9.1.tar.gz", hash = "sha256:b540987f239e745613c7a9176f3edb72b832a4ac465cf02712288397832b5e8d", size = 32855, upload-time = "2025-09-08T01:34:59.186Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/41/45/1a4ed80516f02155c51f51e8cedb3c1902296743db0bbc66608a0db2814f/jsonschema_specifications-2025.9.1-py3-none-any.whl", hash = "sha256:98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe", size = 18437, upload-time = "2025-09-08T01:34:57.871Z" },
+]
+
+[[package]]
+name = "jupyter-core"
+version = "5.9.1"
+source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
+dependencies = [
+    { name = "platformdirs" },
+    { name = "traitlets" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/02/49/9d1284d0dc65e2c757b74c6687b6d319b02f822ad039e5c512df9194d9dd/jupyter_core-5.9.1.tar.gz", hash = "sha256:4d09aaff303b9566c3ce657f580bd089ff5c91f5f89cf7d8846c3cdf465b5508", size = 89814, upload-time = "2025-10-16T19:19:18.444Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e7/e7/80988e32bf6f73919a113473a604f5a8f09094de312b9d52b79c2df7612b/jupyter_core-5.9.1-py3-none-any.whl", hash = "sha256:ebf87fdc6073d142e114c72c9e29a9d7ca03fad818c5d300ce2adc1fb0743407", size = 29032, upload-time = "2025-10-16T19:19:16.783Z" },
 ]
 
 [[package]]
@@ -3438,6 +3476,21 @@ wheels = [
 ]
 
 [[package]]
+name = "nbformat"
+version = "5.11.1"
+source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
+dependencies = [
+    { name = "fastjsonschema" },
+    { name = "jsonschema" },
+    { name = "jupyter-core" },
+    { name = "traitlets" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/31/72/b3446efab8756e7df4b8ec587f8e611cb5a7249e4323db480802f1d3be04/nbformat-5.11.1.tar.gz", hash = "sha256:32d4521c68c6e7d5b29c76defaeed9f42ea733142b9b19f88277ce10390b9c4d", size = 147775, upload-time = "2026-08-17T08:10:51.942Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1a/69/ee613f74085ca7103f79cd08d579c4f3177d1d26e5d3d9528d2d6536a707/nbformat-5.11.1-py3-none-any.whl", hash = "sha256:cc6698fa75f4fab8755ead786317815f13a6fee3b53311c0abb1a8b51d52f7ec", size = 79849, upload-time = "2026-08-17T08:10:50.18Z" },
+]
+
+[[package]]
 name = "ndindex"
 version = "1.10.1"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
@@ -3796,6 +3849,34 @@ version = "0.1.1"
 source = { git = "https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git?rev=b203f8eb28dc4b6771a39d5c5b7ad3d9d8583ac8#b203f8eb28dc4b6771a39d5c5b7ad3d9d8583ac8" }
 
 [[package]]
+name = "nomad-analysis"
+version = "0.2.4"
+source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
+dependencies = [
+    { name = "nbformat" },
+    { name = "nomad-lab" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/99/93/89f06c15f93f204af8faa233bcd70565dce5cae58bcc49cd6644a6a72a04/nomad_analysis-0.2.4.tar.gz", hash = "sha256:0b21aa5d7568365634f48290821aae30ba50a2483baa2f7543859f304ba72209", size = 139722, upload-time = "2026-06-12T14:46:21.802Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fb/14/f55f7e110f055563c7020500d6f3ceb2279203fc25a71ee139d0d7586f65/nomad_analysis-0.2.4-py3-none-any.whl", hash = "sha256:36e1fcdf0f7b7c430b73d729eb4779315f5965b0df5f13cb6f2f4b8d8cb8022b", size = 32103, upload-time = "2026-06-12T14:46:20.888Z" },
+]
+
+[[package]]
+name = "nomad-auto-xrd"
+version = "0.3.10.dev1+g8d365fef7"
+source = { git = "https://github.com/FAIRmat-NFDI/nomad-auto-xrd#8d365fef711701b13daebc6b363b59b4388f5a07" }
+dependencies = [
+    { name = "nomad-analysis" },
+    { name = "nomad-lab", extra = ["infrastructure"] },
+    { name = "nomad-measurements" },
+    { name = "nomad-schema-plugin-run" },
+    { name = "nomad-schema-plugin-simulation-workflow" },
+    { name = "pandas" },
+    { name = "plotly" },
+    { name = "psutil" },
+]
+
+[[package]]
 name = "nomad-avl-fire-rdm"
 version = "0.1.0"
 source = { git = "https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git?rev=d7c2fcb58eb68aaf6437a67035fc45a935c64aa3#d7c2fcb58eb68aaf6437a67035fc45a935c64aa3" }
@@ -3825,9 +3906,11 @@ plugins = [
     { name = "eelsdbconverter" },
     { name = "lxml" },
     { name = "nomad-aitoolkit" },
+    { name = "nomad-auto-xrd" },
     { name = "nomad-avl-fire-rdm" },
     { name = "nomad-filter-plugin" },
     { name = "nomad-greenlight-plugin" },
+    { name = "nomad-measurements" },
     { name = "nomad-normalizer-plugin-bandstructure" },
     { name = "nomad-normalizer-plugin-dos" },
     { name = "nomad-normalizer-plugin-simulation-workflow" },
@@ -3866,11 +3949,13 @@ requires-dist = [
     { name = "jupyter-events", marker = "extra == 'jupyter'" },
     { name = "lxml", marker = "extra == 'plugins'" },
     { name = "nomad-aitoolkit", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git?rev=b203f8eb28dc4b6771a39d5c5b7ad3d9d8583ac8" },
+    { name = "nomad-auto-xrd", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-auto-xrd" },
     { name = "nomad-avl-fire-rdm", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git?rev=d7c2fcb58eb68aaf6437a67035fc45a935c64aa3" },
     { name = "nomad-filter-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-filter-plugin?rev=b4c57f93651885843c42a2cafff0bbc5cba7a2e6" },
     { name = "nomad-greenlight-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-greenlight-plugin.git?rev=8c281b939f0ba506d3cfac0bb975ee56a703b7c7" },
     { name = "nomad-lab", extras = ["dev", "infrastructure"], marker = "extra == 'dev'" },
     { name = "nomad-lab", extras = ["infrastructure"], specifier = ">=1.4.0" },
+    { name = "nomad-measurements", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-measurements" },
     { name = "nomad-normalizer-plugin-bandstructure", marker = "extra == 'plugins'", specifier = ">=1.0" },
     { name = "nomad-normalizer-plugin-dos", marker = "extra == 'plugins'", specifier = ">=1.0" },
     { name = "nomad-normalizer-plugin-simulation-workflow", marker = "extra == 'plugins'", specifier = ">=1.0" },
@@ -4024,6 +4109,16 @@ infrastructure = [
     { name = "uvicorn", extra = ["standard"] },
     { name = "validators" },
     { name = "zipstream-ng" },
+]
+
+[[package]]
+name = "nomad-measurements"
+version = "1.3.8"
+source = { git = "https://github.com/FAIRmat-NFDI/nomad-measurements#9e9eb3311ae9038abae39a1be1d20298cc242f30" }
+dependencies = [
+    { name = "fairmat-readers-transmission" },
+    { name = "fairmat-readers-xrd" },
+    { name = "nomad-lab" },
 ]
 
 [[package]]
