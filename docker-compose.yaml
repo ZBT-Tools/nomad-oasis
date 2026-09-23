@@ -130,7 +130,8 @@ services:
   # nomad worker (processing)
   worker:
     restart: unless-stopped
-    image: ghcr.io/zbt-tools/nomad-oasis:main
+    #image: ghcr.io/zbt-tools/nomad-oasis:main
+    image: ghcr.io/zbt-tools/nomad-oasis-for-plugin-test:for_plugin_test
     platform: linux/amd64
     environment:
       NOMAD_SERVICE: nomad_oasis_worker
@@ -249,7 +250,8 @@ services:
   # nomad app (api + proxy)
   app:
     restart: unless-stopped
-    image: ghcr.io/zbt-tools/nomad-oasis:main
+    # image: ghcr.io/zbt-tools/nomad-oasis:main
+    image: ghcr.io/zbt-tools/nomad-oasis-for-plugin-test:for_plugin_test
     platform: linux/amd64
     container_name: nomad_oasis_app
     environment:
@@ -294,7 +296,8 @@ services:
   # nomad remote tools hub (JupyterHUB, e.g. for AI Toolkit)
   north:
     restart: unless-stopped
-    image: ghcr.io/zbt-tools/nomad-oasis:main
+    # image: ghcr.io/zbt-tools/nomad-oasis:main
+    image: ghcr.io/zbt-tools/nomad-oasis-for-plugin-test:for_plugin_test
     platform: linux/amd64
     container_name: nomad_oasis_north
     environment:
@@ -335,7 +338,8 @@ services:
   # to enable the logtransfer service run "docker compose --profile with_logtransfer up"
   logtransfer:
     restart: unless-stopped
-    image: ghcr.io/zbt-tools/nomad-oasis:main
+    # image: ghcr.io/zbt-tools/nomad-oasis:main
+    image: ghcr.io/zbt-tools/nomad-oasis-for-plugin-test:for_plugin_test
     platform: linux/amd64
     container_name: nomad_oasis_logtransfer
     environment:
@@ -383,7 +387,8 @@ services:
 
   # jupyterlab image: (this is only used to pull the image, no service is run for this)
   jupyterlab_image:
-    image: ghcr.io/zbt-tools/nomad-oasis/jupyter:main
+    # image: ghcr.io/zbt-tools/nomad-oasis/jupyter:main
+    image: ghcr.io/zbt-tools/nomad-oasis-for-plugin-test/jupyter:for_plugin_test
     platform: linux/amd64
     container_name: nomad_jupyter_image
     pull_policy: always
