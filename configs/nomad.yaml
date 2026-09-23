@@ -11,7 +11,8 @@ north:
   tools:
     options:
       jupyter:
-        image: ghcr.io/zbt-tools/nomad-oasis/jupyter:main
+        image: ghcr.io/zbt-tools/nomad-oasis-for-plugin-test/jupyter:for_plugin_test 
+        #ghcr.io/zbt-tools/nomad-oasis/jupyter:main
 
 # keycloak:
 #   server_url: 'http://nomad_oasis_keycloak:8080/auth/'
