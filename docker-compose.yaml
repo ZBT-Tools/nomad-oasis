@@ -321,6 +321,8 @@ services:
       - /media/daten/nomad-oasis/.volumes/fs:/app/.volumes/fs
       - /var/run/docker.sock:/var/run/docker.sock
     user: "1000:991"
+    group_add:
+      - "998"
     command: python -m nomad.cli admin run hub
     healthcheck:
       test:
