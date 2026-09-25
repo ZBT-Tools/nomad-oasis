@@ -302,6 +302,7 @@ services:
     container_name: nomad_oasis_north
     environment:
       NOMAD_SERVICE: nomad_oasis_north
+      OAUTH_CALLBACK_URL: "http://172.16.134.9:1080/nomad-oasis/north/hub/oauth_callback"
       NOMAD_NORTH_DOCKER_NETWORK: nomad_oasis_network
       NOMAD_NORTH_HUB_CONNECT_IP: north
       NOMAD_NORTH_HUB_IP: "0.0.0.0"
