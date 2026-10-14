@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=84", "setuptools-scm==10.3.4"]
+requires = ["setuptools>=64", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
@@ -21,7 +21,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
 dependencies = [
-  "nomad-lab[infrastructure]==1.4.2",
+  "nomad-lab[infrastructure]==1.4.3",
   "setuptools==84.0.0",
   "fastapi==0.136.3",
 ]
@@ -32,7 +32,7 @@ repository = "https://github.com/zbt-tools/nomad-oasis"
 
 [project.optional-dependencies]
 plugins = [
-  "nomad-north-jupyter==0.2.6",
+  "nomad-north-jupyter>=0.2.6",
   "perovskite-solar-cell-database @ git+https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git@v1.2.15",
   "nomad-porous-materials @ git+https://github.com/FAIRmat-NFDI/nomad-porous-materials.git@b07ec28178dbbd7e7c55c0eba040a697d90e6bba",
   "nomad-aitoolkit @ git+https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git@v0.2.0",
@@ -76,16 +76,13 @@ jupyter = ["jupyter-events==0.12.1"]
 gpu-action = []
 cpu-action = []
 
-dev = ["nomad-lab[dev, infrastructure]==1.4.2"]
+dev = ["nomad-lab[dev, infrastructure]==1.4.3"]
 
 [tool.uv]
 extra-index-url = [
   "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple",
 ]
-prerelease = "explicit"
-
-constraint-dependencies = ["flatdict==4.1.0"]
-
+prerelease = "if-necessary-or-explicit"
 
 [tool.setuptools.packages.find]
 exclude = ["gui*", "docs*", "config*"]

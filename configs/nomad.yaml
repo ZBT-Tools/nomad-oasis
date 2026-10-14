@@ -6,23 +6,12 @@ oasis:
   is_oasis: true
   uses_central_user_management: true
 
-north:
-  jupyterhub_crypt_key: "978bfb2e13a8448a253c629d8dd84ff89587f30e635b753153960930cad9d36d"
-
 plugins:
   entry_points:
     options:
-      "nomad_north_jupyter.north_tools:jupyter":
+      nomad_north_jupyter.north_tools:jupyter:
         north_tool:
           image: ghcr.io/zbt-tools/nomad-oasis-for-plugin-test/jupyter:for_plugin_test
-          # image: ghcr.io/zbt-tools/nomad-oasis/jupyter:main
-
-# keycloak:
-#   server_url: 'http://nomad_oasis_keycloak:8080/auth/'
-#   public_server_url: 'http://172.16.134.9:1080/keycloak/auth/'
-#   realm_name: nomad
-#   username: 'admin'
-#   password: 'password'
 
 meta:
   deployment: "oasis"
@@ -32,6 +21,9 @@ meta:
 logstash:
   enabled: false
 
+temporal:
+  enabled: true
+
 mongo:
   db_name: nomad_oasis_v1
 
@@ -39,5 +31,6 @@ elastic:
   entries_index: nomad_oasis_entries_v1
   materials_index: nomad_oasis_materials_v1
 
-temporal:
+north:
   enabled: true
+  enable_new_hub_api: true
