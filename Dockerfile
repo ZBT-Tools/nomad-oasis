@@ -152,6 +152,9 @@ FROM base_final AS final
 ARG PYTHON_VERSION=3.12
 
 COPY --chown=nomad:${UID} --from=builder /opt/venv /opt/venv
+COPY --chown=nomad:${UID} --chmod=755 scripts/run.sh scripts/run-worker.sh ./
+# Keep legacy startup commands usable, including builds from Windows checkouts.
+RUN sed -i 's/\r$//' run.sh run-worker.sh
 COPY configs/nomad.yaml nomad.yaml
 COPY pyproject.toml uv.lock /opt/
 COPY --chown=nomad:${UID} --from=docs /app/built_docs /opt/venv/lib/python${PYTHON_VERSION}/site-packages/nomad/app/static/docs
