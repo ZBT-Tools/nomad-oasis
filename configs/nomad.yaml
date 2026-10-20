@@ -1,6 +1,6 @@
 services:
-  api_host: "localhost"
-  api_port: 80
+  api_host: "172.16.134.9"
+  api_port: 1080
   api_base_path: "/backend"
 
 oasis:
