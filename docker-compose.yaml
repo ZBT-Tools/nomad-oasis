@@ -197,7 +197,7 @@ services:
     command: python -m nomad.cli admin run action-internal-worker
     healthcheck: *worker-healthcheck
     deploy:
-      replicas: 4
+      replicas: 2
       resources:
         limits:
           cpus: "4.0" # Maximum 4 CPU cores
@@ -331,8 +331,8 @@ services:
       north:
         condition: service_healthy
     ports:
-      - 1080:80
-      - 443:443
+      - 1080:1080
+   
 
 volumes:
   mongo:
