@@ -70,7 +70,7 @@ plugins = [
   "avl-fire-rdm @ git+https://github.com/ZBT-Tools/AVL-FIRE-RDM.git@62b2b25d7adc1b306788e3cda9c0c5ddbac24f7a",
   "nomad-filter-plugin @ git+https://github.com/ZBT-Tools/nomad-filter-plugin@b4c57f93651885843c42a2cafff0bbc5cba7a2e6",
   "nomad-measurements @ git+https://github.com/FAIRmat-NFDI/nomad-measurements@v1.3.8",
-  "nomad-auto-xrd @ git+https://github.com/FAIRmat-NFDI/nomad-auto-xrd@v0.3.9"
+  "nomad-auto-xrd @ git+https://github.com/FAIRmat-NFDI/nomad-auto-xrd@v0.3.9",
   "nomad-gui==2.0.0",
 ]
 jupyter = ["jupyter-events==0.12.1"]
