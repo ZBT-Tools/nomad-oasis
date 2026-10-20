@@ -246,7 +246,7 @@ services:
     environment:
       <<: *nomad-environment
       NOMAD_SERVICE: nomad_oasis_app
-      NOMAD_SERVICES_API_PORT: 80
+      NOMAD_SERVICES_API_PORT: 1080
       NOMAD_FS_EXTERNAL_WORKING_DIRECTORY: "$PWD"
       NOMAD_NORTH_HUB_HOST: north
     command: python -m nomad.cli admin run app --with-gui --gunicorn --host 0.0.0.0 --workers 2
