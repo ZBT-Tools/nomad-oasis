@@ -18,10 +18,10 @@ name = "nomad-distribution"
 description = "nomad distribution template"
 dynamic = ["version"]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = { file = "LICENSE" }
 dependencies = [
-  "nomad-lab[infrastructure]==1.4.3",
+  "nomad-lab[infrastructure]==2.0.0",
   "setuptools==84.0.0",
   "fastapi==0.136.3",
 ]
@@ -71,12 +71,13 @@ plugins = [
   "nomad-filter-plugin @ git+https://github.com/ZBT-Tools/nomad-filter-plugin@b4c57f93651885843c42a2cafff0bbc5cba7a2e6",
   "nomad-measurements @ git+https://github.com/FAIRmat-NFDI/nomad-measurements@v1.3.8",
   "nomad-auto-xrd @ git+https://github.com/FAIRmat-NFDI/nomad-auto-xrd@v0.3.9"
+  "nomad-gui==2.0.0",
 ]
 jupyter = ["jupyter-events==0.12.1"]
 gpu-action = []
 cpu-action = []
 
-dev = ["nomad-lab[dev, infrastructure]==1.4.3"]
+dev = ["nomad-lab[infrastructure, dev]==2.0.0"]
 
 [tool.uv]
 extra-index-url = [
