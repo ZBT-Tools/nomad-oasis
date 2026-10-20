@@ -120,7 +120,7 @@ jobs:
         include:
           - service: app
             target: final
-            image_suffix: ""
+            image_suffix: "-for-plugin-test"
           - service: jupyter
             target: jupyter
             image_suffix: /jupyter
