@@ -1258,7 +1258,7 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/58/01/1253e6698a07380cd31a736d248a3f2a50a7c88779a1813da27503cadc2a/contourpy-1.3.3.tar.gz", hash = "sha256:083e12155b210502d0bca491432bb04d56dc3432f95a979b429f2848c3dbe880", size = 13466174, upload-time = "2025-07-26T12:03:12.549Z" }
 wheels = [
@@ -1354,7 +1354,7 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/83/5a/a55177dd22553a277388e8a1b3220e92de91bacb28356cdc73caa240121d/contourpy-1.4.0.tar.gz", hash = "sha256:20156f5a1ac4f8ce02656e39a61e82164a3d359796dc8026f75b062783d500e1", size = 13323726, upload-time = "2026-09-11T19:05:05.808Z" }
 wheels = [
@@ -1703,7 +1703,7 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "wrapt" },
+    { name = "wrapt", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/49/85/12f0a49a7c4ffb70572b6c2ef13c90c88fd190debda93b23f026b25f9634/deprecated-1.3.1.tar.gz", hash = "sha256:b1b50e0ff0c1fddaa5708a2c6b0a6588bb09b892825ab2b214ac9ea9d92a5223", size = 2932523, upload-time = "2025-10-30T08:19:02.757Z" }
 wheels = [
@@ -1729,7 +1729,7 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "wrapt" },
+    { name = "wrapt", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/f7/9c/16649913bf14c73e0a9453782e148362ff2657067deff6aa9c7ebcddcc31/deprecated-3.0.0.tar.gz", hash = "sha256:16850204d3a1e6bb0acd06bff48d96e8b0a0d25d1c52f71705405a0f4894192d", size = 166912, upload-time = "2026-09-26T13:58:10.675Z" }
 wheels = [
@@ -1761,8 +1761,8 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy" },
-    { name = "pycifrw" },
+    { name = "numpy", marker = "python_full_version < '3.12'" },
+    { name = "pycifrw", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/05/1c/05da978e63d0c38051a73f01351a67ff065b6a324fa7e95a75ae756c9728/diffpy_structure-3.3.1.tar.gz", hash = "sha256:886d3ad166792c1d4d9ccef964b4cf948ef41fbbcd039e3551edd46c4d30dac6", size = 138566, upload-time = "2025-07-25T01:02:06.139Z" }
 wheels = [
@@ -1788,9 +1788,9 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "diffpy-utils" },
-    { name = "numpy" },
-    { name = "pycifrw" },
+    { name = "diffpy-utils", marker = "python_full_version >= '3.12'" },
+    { name = "numpy", marker = "python_full_version >= '3.12'" },
+    { name = "pycifrw", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a8/21/53699a7162777a8485d4de4b85f2940c82781780cf31dd65d995588f2f20/diffpy_structure-3.5.0.tar.gz", hash = "sha256:0e40d840464b550ef7ea77dcb4c5b95ebfa46bea5909722d3395c3bc5f207e7b", size = 158463, upload-time = "2026-08-23T19:52:41.287Z" }
 wheels = [
@@ -1802,9 +1802,9 @@ name = "diffpy-utils"
 version = "3.7.2"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
-    { name = "numpy" },
-    { name = "scipy", version = "1.18.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "xraydb" },
+    { name = "numpy", marker = "python_full_version >= '3.12'" },
+    { name = "scipy", version = "1.18.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "xraydb", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/76/ae/c4ff7f1e5a8f3c801a00f2391b0d05fe38780fd1b63356081c24383712d1/diffpy_utils-3.7.2.tar.gz", hash = "sha256:463486a100ba981299b3b16c40ab39b0e84312d63498870e5d15e0608614ab2c", size = 113726, upload-time = "2026-03-17T14:47:27.463Z" }
 wheels = [
@@ -2693,8 +2693,8 @@ name = "httpcore2"
 version = "2.15.1"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
-    { name = "h11" },
-    { name = "truststore" },
+    { name = "h11", marker = "sys_platform != 'emscripten'" },
+    { name = "truststore", marker = "sys_platform != 'emscripten'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/c2/a9/11bc39967bb9dfaab0981ab4d49f519818acbee662a7e76d06813319c838/httpcore2-2.15.1.tar.gz", hash = "sha256:a94b6b3e6260e1a3f035915408d3dcd7dc8e844c2b544b642e227cf98a747af0", size = 69859, upload-time = "2026-10-19T20:14:23.824Z" }
 wheels = [
@@ -2958,7 +2958,7 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/3b/8d/dc18623e5e926ad53c626e128c8baaf4ec42e41029cf0a07381cfef79289/imagecodecs-2026.3.6.tar.gz", hash = "sha256:471b8a4d1b3843cbf7179b45f7d7261f0c0b28809efc1ca6c47822477b143b85", size = 9565259, upload-time = "2026-03-07T01:26:41.183Z" }
 wheels = [
@@ -2990,7 +2990,7 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/28/7d/1658ab284e024562f1fd3a684dded89b97125789743e0d1f57a494b64290/imagecodecs-2026.10.10.tar.gz", hash = "sha256:cde6914505668196b15e0f99dbc236b779e3b61217f04d2e498cbae790965f9f", size = 9685030, upload-time = "2026-10-09T22:45:38.598Z" }
 wheels = [
@@ -5008,9 +5008,9 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "nionutils", version = "4.14.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "numpy" },
-    { name = "scipy", version = "1.17.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
+    { name = "nionutils", version = "4.14.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", marker = "python_full_version < '3.12'" },
+    { name = "scipy", version = "1.17.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a5/bb/735072fe053158913866197de1cd90830fb676e064d4850e8c132a126c52/niondata-15.9.1.tar.gz", hash = "sha256:33a44b55caec168ad209ea43395e3a74f63c2eb17945f86ae7ff2aab8b6317f4", size = 64710, upload-time = "2025-09-25T22:04:48.824Z" }
 wheels = [
@@ -5036,9 +5036,9 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "nionutils", version = "4.14.3", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "numpy" },
-    { name = "scipy", version = "1.18.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
+    { name = "nionutils", version = "4.14.3", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", marker = "python_full_version >= '3.12'" },
+    { name = "scipy", version = "1.18.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/1d/d7/322f2a1bc0209d99892e969cd8846a19650b8ba9ea259ff0e68996181864/niondata-15.10.0.tar.gz", hash = "sha256:c3ed11a695db6b2e6cc3c852e8bb555dfcc0e78e964fd4af85ca8089cb842ceb", size = 61714, upload-time = "2026-06-05T19:50:02.482Z" }
 wheels = [
@@ -5058,17 +5058,17 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "h5py" },
-    { name = "imageio" },
-    { name = "niondata", version = "15.9.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "nionswift-io", version = "15.5.0", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "nionui", version = "10.2.2", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "nionutils", version = "4.14.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "numpy" },
-    { name = "pillow" },
-    { name = "pytz" },
-    { name = "scipy", version = "1.17.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "tzlocal" },
+    { name = "h5py", marker = "python_full_version < '3.12'" },
+    { name = "imageio", marker = "python_full_version < '3.12'" },
+    { name = "niondata", version = "15.9.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "nionswift-io", version = "15.5.0", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "nionui", version = "10.2.2", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "nionutils", version = "4.14.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", marker = "python_full_version < '3.12'" },
+    { name = "pillow", marker = "python_full_version < '3.12'" },
+    { name = "pytz", marker = "python_full_version < '3.12'" },
+    { name = "scipy", version = "1.17.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "tzlocal", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/08/d8/87321c97aa830665cbc32daec3da2710d5840ba643ffeac57dc0bf54ae7c/nionswift-16.16.2.tar.gz", hash = "sha256:26cda4055f00af8fe5add0a50a5dc82905fea112edba5db3f3b6315fb04a2de7", size = 753063, upload-time = "2025-10-12T17:53:30.735Z" }
 wheels = [
@@ -5094,17 +5094,17 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "h5py" },
-    { name = "imageio" },
-    { name = "niondata", version = "15.10.0", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "nionswift-io", version = "15.6.0", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "nionui", version = "11.1.0", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "nionutils", version = "4.14.3", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "numpy" },
-    { name = "pillow" },
-    { name = "pytz" },
-    { name = "scipy", version = "1.18.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "tzlocal" },
+    { name = "h5py", marker = "python_full_version >= '3.12'" },
+    { name = "imageio", marker = "python_full_version >= '3.12'" },
+    { name = "niondata", version = "15.10.0", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "nionswift-io", version = "15.6.0", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "nionui", version = "11.1.0", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "nionutils", version = "4.14.3", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", marker = "python_full_version >= '3.12'" },
+    { name = "pillow", marker = "python_full_version >= '3.12'" },
+    { name = "pytz", marker = "python_full_version >= '3.12'" },
+    { name = "scipy", version = "1.18.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "tzlocal", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/f1/42/843631024d6fa862feea19bee5bb9b2deeeba73710f6c08794b1616c5a8f/nionswift-16.18.1.tar.gz", hash = "sha256:2707fe23ab80cae3a40c69f01261ec74f9450e609e527fe758d6ddd7dd639dff", size = 783609, upload-time = "2026-07-11T19:56:44.06Z" }
 wheels = [
@@ -5124,11 +5124,11 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "niondata", version = "15.9.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "nionutils", version = "4.14.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "numpy" },
-    { name = "pytz" },
-    { name = "tifffile", version = "2026.3.3", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
+    { name = "niondata", version = "15.9.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "nionutils", version = "4.14.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", marker = "python_full_version < '3.12'" },
+    { name = "pytz", marker = "python_full_version < '3.12'" },
+    { name = "tifffile", version = "2026.3.3", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/36/57/5869728ead1e674ed385ebdd2766097e7de8fb8e19831408a5fca853a686/nionswift_io-15.5.0.tar.gz", hash = "sha256:768c8d179d558d969ef4e5c3a6f9cdb3e6770ccb0e1417bde38ea0a53871659f", size = 34254, upload-time = "2025-06-20T20:53:25.563Z" }
 wheels = [
@@ -5154,11 +5154,11 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "niondata", version = "15.10.0", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "nionutils", version = "4.14.3", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "numpy" },
-    { name = "pytz" },
-    { name = "tifffile", version = "2026.10.15", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
+    { name = "niondata", version = "15.10.0", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "nionutils", version = "4.14.3", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", marker = "python_full_version >= '3.12'" },
+    { name = "pytz", marker = "python_full_version >= '3.12'" },
+    { name = "tifffile", version = "2026.10.15", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/f7/9d/6f3964b6f10bf1c9af0f22b0b6e98b04dd43abe22e1c465775304fec8247/nionswift_io-15.6.0.tar.gz", hash = "sha256:9d3d5b0c5ea8c674038c8035fffe72f482de25a3117f9c843c7825317f074e43", size = 56223, upload-time = "2026-06-05T20:38:10.867Z" }
 wheels = [
@@ -5178,9 +5178,9 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "imageio" },
-    { name = "nionutils", version = "4.14.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "numpy" },
+    { name = "imageio", marker = "python_full_version < '3.12'" },
+    { name = "nionutils", version = "4.14.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/39/75/3be296b1d557785443354868dd5b4994f5c85a193de49f512bc1825cfbd0/nionui-10.2.2.tar.gz", hash = "sha256:b23f33cb5fae5ef1f42c6318ba08888ee21aa8e9754597f69dd341518b1abcf2", size = 211603, upload-time = "2025-10-12T17:04:48.247Z" }
 wheels = [
@@ -5206,9 +5206,9 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "imageio" },
-    { name = "nionutils", version = "4.14.3", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" } },
-    { name = "numpy" },
+    { name = "imageio", marker = "python_full_version >= '3.12'" },
+    { name = "nionutils", version = "4.14.3", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/11/7f/255d710d92115c48e2675af0396cf7260cf1137890537aef021945282341/nionui-11.1.0.tar.gz", hash = "sha256:6ca07191d2aced686e8c63701f18e4b9a66319fb01448293e5e4db94b830c876", size = 204209, upload-time = "2026-07-11T18:33:10.684Z" }
 wheels = [
@@ -5303,7 +5303,11 @@ name = "nomad-distribution"
 source = { editable = "." }
 dependencies = [
     { name = "fastapi" },
+    { name = "lxml" },
+    { name = "nomad-avl-fire-rdm" },
     { name = "nomad-lab", extra = ["infrastructure"] },
+    { name = "paramiko" },
+    { name = "python-dotenv" },
     { name = "setuptools" },
 ]
 
@@ -5317,10 +5321,8 @@ jupyter = [
 plugins = [
     { name = "avl-fire-rdm" },
     { name = "eelsdbconverter" },
-    { name = "lxml" },
     { name = "nomad-aitoolkit" },
     { name = "nomad-auto-xrd" },
-    { name = "nomad-avl-fire-rdm" },
     { name = "nomad-filter-plugin" },
     { name = "nomad-greenlight-plugin" },
     { name = "nomad-gui" },
@@ -5342,7 +5344,6 @@ plugins = [
     { name = "nomad-simulations" },
     { name = "nomad-tdms-plugin" },
     { name = "nptdms" },
-    { name = "paramiko" },
     { name = "perovskite-solar-cell-database" },
     { name = "pynxtools" },
     { name = "pynxtools-apm" },
@@ -5354,7 +5355,6 @@ plugins = [
     { name = "pynxtools-spm" },
     { name = "pynxtools-xps" },
     { name = "pynxtools-xrd" },
-    { name = "python-dotenv" },
 ]
 
 [package.metadata]
@@ -5363,10 +5363,10 @@ requires-dist = [
     { name = "eelsdbconverter", marker = "extra == 'plugins'", git = "https://github.com/nomad-coe/nomad-parser-eelsdb.git?rev=788eb03dc71ef9b164e2a5ccb9c0209b546f5c38" },
     { name = "fastapi", specifier = "==0.136.3" },
     { name = "jupyter-events", marker = "extra == 'jupyter'", specifier = "==0.12.1" },
-    { name = "lxml", marker = "extra == 'plugins'", specifier = "==6.1.3" },
+    { name = "lxml", specifier = "==6.1.3" },
     { name = "nomad-aitoolkit", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git?rev=v0.2.0" },
     { name = "nomad-auto-xrd", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-auto-xrd?rev=v0.3.9" },
-    { name = "nomad-avl-fire-rdm", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git?rev=d7c2fcb58eb68aaf6437a67035fc45a935c64aa3" },
+    { name = "nomad-avl-fire-rdm", git = "https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git?rev=d7c2fcb58eb68aaf6437a67035fc45a935c64aa3" },
     { name = "nomad-filter-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-filter-plugin?rev=b4c57f93651885843c42a2cafff0bbc5cba7a2e6" },
     { name = "nomad-greenlight-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-greenlight-plugin.git?rev=8c5e0f93499feb4a063315175f9a094dde040ac6" },
     { name = "nomad-gui", marker = "extra == 'plugins'", specifier = "==2.0.0" },
@@ -5390,7 +5390,7 @@ requires-dist = [
     { name = "nomad-simulations", marker = "extra == 'plugins'", specifier = "==0.8.0" },
     { name = "nomad-tdms-plugin", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/nomad-tdms-plugin.git?rev=8f38d4a47b66e6308e83da9d673cc03c8dae08ae" },
     { name = "nptdms", marker = "extra == 'plugins'", specifier = "==1.11.0" },
-    { name = "paramiko", marker = "extra == 'plugins'", specifier = "==5.0.0" },
+    { name = "paramiko", specifier = "==5.0.0" },
     { name = "perovskite-solar-cell-database", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git?rev=v1.2.15" },
     { name = "pynxtools", marker = "extra == 'plugins'", specifier = "==0.15.2" },
     { name = "pynxtools-apm", marker = "extra == 'plugins'", specifier = "==0.5.3" },
@@ -5402,7 +5402,7 @@ requires-dist = [
     { name = "pynxtools-spm", marker = "extra == 'plugins'", specifier = "==0.4.0" },
     { name = "pynxtools-xps", marker = "extra == 'plugins'", specifier = "==0.6.2" },
     { name = "pynxtools-xrd", marker = "extra == 'plugins'", specifier = "==0.0.8" },
-    { name = "python-dotenv", marker = "extra == 'plugins'", specifier = "==1.2.3" },
+    { name = "python-dotenv", specifier = "==1.2.3" },
     { name = "setuptools", specifier = "==84.0.0" },
 ]
 provides-extras = ["plugins", "jupyter", "gpu-action", "cpu-action", "dev"]
@@ -6819,10 +6819,10 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "flexcache" },
-    { name = "flexparser" },
-    { name = "platformdirs" },
-    { name = "typing-extensions" },
+    { name = "flexcache", marker = "python_full_version < '3.12'" },
+    { name = "flexparser", marker = "python_full_version < '3.12'" },
+    { name = "platformdirs", marker = "python_full_version < '3.12'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/52/9d/b1379cdbd33a49d17d627bc24e2b63cca06a1c5343b38072d2889499e82e/pint-0.25.3.tar.gz", hash = "sha256:f8f5df6cf65314d74da1ade1bf96f8e3e4d0c41b51577ac53c49e7d44ca5acee", size = 255106, upload-time = "2026-03-19T21:57:08.72Z" }
 wheels = [
@@ -6848,10 +6848,10 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "flexcache" },
-    { name = "flexparser" },
-    { name = "platformdirs" },
-    { name = "typing-extensions" },
+    { name = "flexcache", marker = "python_full_version >= '3.12'" },
+    { name = "flexparser", marker = "python_full_version >= '3.12'" },
+    { name = "platformdirs", marker = "python_full_version >= '3.12'" },
+    { name = "typing-extensions", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/d3/b0/cef9c8913ebe959d97b2d57b1fc2a77a4291c4f2bd4dc3fe4d3313c938ea/pint-0.26.2.tar.gz", hash = "sha256:391e5d2fc01fdb121c113b8eb47386688575542c1f5144c465ff318bf5133573", size = 295834, upload-time = "2026-10-19T19:49:31.845Z" }
 wheels = [
@@ -7935,7 +7935,7 @@ name = "pyobjc-framework-cocoa"
 version = "12.2.2"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
-    { name = "pyobjc-core" },
+    { name = "pyobjc-core", marker = "sys_platform != 'emscripten' and sys_platform != 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/75/76/49c6da2c6a831020b4854ba20079d5a1030474bffc776b7b73c2eeff8c15/pyobjc_framework_cocoa-12.2.2.tar.gz", hash = "sha256:c96c0ef69a71afbbb0e6a7d594b455c5fe47d62e0db376ee7a2b4b828c16ace9", size = 3132831, upload-time = "2026-08-11T19:44:02.288Z" }
 wheels = [
@@ -8940,7 +8940,7 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7a/97/5a3609c4f8d58b039179648e62dd220f89864f56f7357f5d4f45c29eb2cc/scipy-1.17.1.tar.gz", hash = "sha256:95d8e012d8cb8816c226aef832200b1d45109ed4464303e997c5b13122b297c0", size = 30573822, upload-time = "2026-02-23T00:26:24.851Z" }
 wheels = [
@@ -9025,7 +9025,7 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7e/74/66de6258867beb2ef08f35f9f2ac017a52cacd5081714d239ff1a442d458/scipy-1.18.1.tar.gz", hash = "sha256:52c4b7422442aba924d03ad4019852b08a92e64ea187b933135687bfe2747307", size = 30781235, upload-time = "2026-08-21T23:28:50.599Z" }
 wheels = [
@@ -9559,7 +9559,7 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/c5/cb/2f6d79c7576e22c116352a801f4c3c8ace5957e9aced862012430b62e14f/tifffile-2026.3.3.tar.gz", hash = "sha256:d9a1266bed6f2ee1dd0abde2018a38b4f8b2935cb843df381d70ac4eac5458b7", size = 388745, upload-time = "2026-03-03T19:14:38.134Z" }
 wheels = [
@@ -9585,7 +9585,7 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/fd/87/a982ca5b892579397c2b155275cc0119b51feb1701eaefa18acb0245f0a4/tifffile-2026.10.15.tar.gz", hash = "sha256:a5ee666dbd6d62e059830a3450825a2521a981b3f45c07a80ab009484aef56f0", size = 454150, upload-time = "2026-10-16T00:32:10.511Z" }
 wheels = [
