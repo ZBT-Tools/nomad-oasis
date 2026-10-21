@@ -24,6 +24,10 @@ dependencies = [
   "nomad-lab[infrastructure]==2.0.0",
   "setuptools==84.0.0",
   "fastapi==0.136.3",
+  "nomad-avl-fire-rdm @ git+https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git@d7c2fcb58eb68aaf6437a67035fc45a935c64aa3",
+  "paramiko==5.0.0",
+  "lxml==6.1.3",
+  "python-dotenv==1.2.3",
 ]
 
 
@@ -63,10 +67,6 @@ plugins = [
   "nptdms==1.11.0",
   "nomad-greenlight-plugin @ git+https://github.com/ZBT-Tools/nomad-greenlight-plugin.git@8c5e0f93499feb4a063315175f9a094dde040ac6",
   "nomad-tdms-plugin @ git+https://github.com/ZBT-Tools/nomad-tdms-plugin.git@8f38d4a47b66e6308e83da9d673cc03c8dae08ae",
-  "nomad-avl-fire-rdm @ git+https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git@d7c2fcb58eb68aaf6437a67035fc45a935c64aa3",
-  "paramiko==5.0.0",
-  "lxml==6.1.3",
-  "python-dotenv==1.2.3",
   "avl-fire-rdm @ git+https://github.com/ZBT-Tools/AVL-FIRE-RDM.git@62b2b25d7adc1b306788e3cda9c0c5ddbac24f7a",
   "nomad-filter-plugin @ git+https://github.com/ZBT-Tools/nomad-filter-plugin@b4c57f93651885843c42a2cafff0bbc5cba7a2e6",
   "nomad-measurements @ git+https://github.com/FAIRmat-NFDI/nomad-measurements@v1.3.8",
