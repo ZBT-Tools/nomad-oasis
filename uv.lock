@@ -5355,6 +5355,7 @@ plugins = [
     { name = "pynxtools-spm" },
     { name = "pynxtools-xps" },
     { name = "pynxtools-xrd" },
+    { name = "pynxtools-xrm" },
 ]
 
 [package.metadata]
@@ -5402,6 +5403,7 @@ requires-dist = [
     { name = "pynxtools-spm", marker = "extra == 'plugins'", specifier = "==0.4.0" },
     { name = "pynxtools-xps", marker = "extra == 'plugins'", specifier = "==0.6.2" },
     { name = "pynxtools-xrd", marker = "extra == 'plugins'", specifier = "==0.0.8" },
+    { name = "pynxtools-xrm", marker = "extra == 'plugins'", git = "https://github.com/ZBT-Tools/pynxtools-xrm" },
     { name = "python-dotenv", specifier = "==1.2.3" },
     { name = "setuptools", specifier = "==84.0.0" },
 ]
@@ -6047,6 +6049,15 @@ source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages
 sdist = { url = "https://files.pythonhosted.org/packages/7a/d8/a1bcc8ba112a627f8ffbdc212a78ce18d3ac07e91a5ca65d27918eee25a1/oauthlib-4.0.0.tar.gz", hash = "sha256:efb274799819440f95b4ab3b818869f1ce9ae26c5beacba0201d1a1b76b54f86", size = 187232, upload-time = "2026-09-28T06:01:18.77Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/d9/f4/78229a1066068ca14fc60fb26cf7381cabe4382261392b90e5f9552722d4/oauthlib-4.0.0-py3-none-any.whl", hash = "sha256:624c28c13a0a59cabf9747dfa52af63be3e512a7f2714df16e91b5b3a145e6cd", size = 159715, upload-time = "2026-09-28T06:01:17.008Z" },
+]
+
+[[package]]
+name = "olefile"
+version = "0.47"
+source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/69/1b/077b508e3e500e1629d366249c3ccb32f95e50258b231705c09e3c7a4366/olefile-0.47.zip", hash = "sha256:599383381a0bf3dfbd932ca0ca6515acd174ed48870cbf7fee123d698c192c1c", size = 112240, upload-time = "2023-12-01T16:22:53.025Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/17/d3/b64c356a907242d719fc668b71befd73324e47ab46c8ebbbede252c154b2/olefile-0.47-py2.py3-none-any.whl", hash = "sha256:543c7da2a7adadf21214938bb79c83ea12b473a4b6ee4ad4bf854e7715e13d1f", size = 114565, upload-time = "2023-12-01T16:22:51.518Z" },
 ]
 
 [[package]]
@@ -7912,6 +7923,20 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/e2/cf/d4b09bbfbd1c0fde3286a7d4c267fef83d29124d87c04722535e800d53ad/pynxtools_xrd-0.0.8.tar.gz", hash = "sha256:0c2b04fa7ab1425218b607542293072d81157eb4a069a334a30c158f24a0aac4", size = 11014, upload-time = "2026-03-20T22:22:01.804Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/6c/de/c7d03d11b2d0652379dcf8abc904cd13862e4ac929b30646442b452ef242/pynxtools_xrd-0.0.8-py3-none-any.whl", hash = "sha256:5e870cd0ebe3f0d88c50e461ef5fb4fb2fb1dc538961b32ae65191f93996f646", size = 15623, upload-time = "2026-03-20T22:22:00.242Z" },
+]
+
+[[package]]
+name = "pynxtools-xrm"
+version = "0.0.post1.dev19+g2e5e3f95e"
+source = { git = "https://github.com/ZBT-Tools/pynxtools-xrm#2e5e3f95ed2ba8c60b8c9f132d3c1329225e9a07" }
+dependencies = [
+    { name = "h5py" },
+    { name = "numpy" },
+    { name = "olefile" },
+    { name = "pillow" },
+    { name = "pynxtools" },
+    { name = "pyyaml" },
+    { name = "tzdata", marker = "sys_platform == 'win32'" },
 ]
 
 [[package]]
