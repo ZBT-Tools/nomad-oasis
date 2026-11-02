@@ -51,6 +51,7 @@ plugins = [
   "pynxtools-spm==0.4.0",
   "pynxtools-xps==0.6.2",
   "pynxtools-xrd==0.0.8",
+  "pynxtools-xrm @git+https://github.com/ZBT-Tools/pynxtools-xrm",
   "nomad-schema-plugin-run==1.0.5",
   "nomad-schema-plugin-simulation-workflow==1.0.11",
   "nomad-normalizer-plugin-bandstructure==1.0.4",
