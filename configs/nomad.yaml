@@ -6,7 +6,13 @@ services:
 
 oasis:
   is_oasis: true
-  uses_central_user_management: true
+  uses_central_user_management: false
+keycloak:
+  server_url: "http://nomad_oasis_keycloak:8080/auth"
+  public_server_url: "http://172.16.134.9:1080/keycloak/auth"
+  realm_name: nomad
+  username: admin
+  password: "admin"
 
 plugins:
   entry_points:

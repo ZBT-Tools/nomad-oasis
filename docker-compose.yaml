@@ -1,19 +1,12 @@
-# ---------------------------------------------------------------------------
-# Common Configuration & YAML Anchors
-# ---------------------------------------------------------------------------
-
-# Reusable image definitions with environment variable overrides
 x-images:
   nomad:      &nomad-image      ${APP_IMAGE:-ghcr.io/zbt-tools/nomad-oasis-for-plugin-test:${IMAGE_TAG:-for_plugin_test}}
   jupyter:    &jupyter-image    ${JUPYTER_IMAGE:-ghcr.io/zbt-tools/nomad-oasis-for-plugin-test/jupyter:${IMAGE_TAG:-for_plugin_test}}
   cpu-worker: &cpu-worker-image ${NOMAD_CPU_WORKER_IMAGE:-ghcr.io/fairmat-nfdi/nomad-distro-template/cpu-action:${IMAGE_TAG:-main}}
   gpu-worker: &gpu-worker-image ${NOMAD_GPU_WORKER_IMAGE:-ghcr.io/fairmat-nfdi/nomad-distro-template/gpu-action:${IMAGE_TAG:-main}}
   north:      &north-image      ${NOMAD_NORTH_IMAGE:-ghcr.io/fairmat-nfdi/nomad-north:v2.0.0rc1}
-
   temporal-admin:  &temporal-admin-image  docker.io/temporalio/admin-tools:${TEMPORAL_VERSION:-1.31}
   temporal-server: &temporal-server-image docker.io/temporalio/server:${TEMPORAL_VERSION:-1.31}
 
-# Common environment variables shared across NOMAD app and internal/cpu/gpu workers
 x-nomad-environment: &nomad-environment
   NOMAD_ELASTIC_HOST: ${NOMAD_ELASTIC_HOST:-elastic}
   NOMAD_ELASTIC_VERSION: ${NOMAD_ELASTIC_VERSION:-9}
@@ -35,7 +28,7 @@ x-nomad-base: &nomad-base
       condition: service_healthy
   volumes:
     # Uncomment the following line to mount a local nomad.yaml into all NOMAD services:
-    # - ./configs/nomad.yaml:/app/nomad.yaml
+    - ./configs/nomad.yaml:/app/nomad.yaml
     - ./.volumes/fs:/app/.volumes/fs
 
 # Base configuration for standard NOMAD services using the default nomad image (app and internal worker)
@@ -72,6 +65,41 @@ x-temporal-admin: &temporal-admin
   entrypoint: ["/bin/sh", "/scripts/_setup_temporal.sh"]
 
 services:
+  keycloak:
+    container_name: nomad_oasis_keycloak
+    image: quay.io/keycloak/keycloak:25.0.6
+    ports:
+      - "8080:8080"
+    environment:
+      #- KEYCLOAK_FRONTEND_URL=172.16.134.9:1080/keycloak/auth
+      - KC_HOSTNAME=http://172.16.134.9:1080/keycloak/auth/
+      - KC_PROXY_HEADERS=xforwarded
+      #- KC_HOSTNAME_PORT=8080
+      - KC_HTTP_RELATIVE_PATH=/auth
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_HOSTNAME_STRICT_BACKEND=false
+      - KC_HTTP_ENABLED=true
+      - KC_HEALTH_ENABLED=true
+      - KC_HTTP_MANAGEMENT_RELATIVE_PATH=/
+      #- KC_HOSTNAME_STRICT=false
+      - KC_HOSTNAME_STRICT_HTTPS=false
+    command: ["start-dev",  "--import-realm"]
+    volumes:
+      - keycloak:/opt/keycloak/data/
+      # - keycloak:/opt/jboss/keycloak/standalone/data
+      #- ./configs/nomad-realm.json:/tmp/nomad-realm.json
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          { printf 'HEAD /health/ready HTTP/1.0\r\n\r\n' >&0;
+          grep -q 'HTTP/1.0 200'; } 0<>/dev/tcp/localhost/9000
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 30s
+
   # the search engine
   elastic:
     restart: unless-stopped
@@ -329,6 +357,8 @@ services:
       worker:
         condition: service_started # TODO: service_healthy
       north:
+        condition: service_healthy
+      keycloak:
         condition: service_healthy
     ports:
       - 1080:1080
