@@ -120,10 +120,10 @@ jobs:
         include:
           - service: app
             target: final
-            image_suffix: "-for-plugin-test"
+            image_suffix: ""
           - service: jupyter
             target: jupyter
-            image_suffix: -for-plugin-test/jupyter
+            image_suffix: /jupyter
           # - service: gpu-action
           #   target: gpu_action_final
           #   image_suffix: /gpu-action
