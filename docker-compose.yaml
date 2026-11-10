@@ -1,6 +1,6 @@
 x-images:
-  nomad:      &nomad-image      ${APP_IMAGE:-ghcr.io/zbt-tools/nomad-oasis-for-plugin-test:${IMAGE_TAG:-for_plugin_test}}
-  jupyter:    &jupyter-image    ${JUPYTER_IMAGE:-ghcr.io/zbt-tools/nomad-oasis-for-plugin-test/jupyter:${IMAGE_TAG:-for_plugin_test}}
+  nomad:      &nomad-image      ${APP_IMAGE:-ghcr.io/zbt-tools/nomad-oasis-for-plugin-test:${IMAGE_TAG:-main}}
+  jupyter:    &jupyter-image    ${JUPYTER_IMAGE:-ghcr.io/zbt-tools/nomad-oasis-for-plugin-test/jupyter:${IMAGE_TAG:-main}}
   cpu-worker: &cpu-worker-image ${NOMAD_CPU_WORKER_IMAGE:-ghcr.io/zbt-tools/nomad-oasis/cpu-action:${IMAGE_TAG:-main}}
   gpu-worker: &gpu-worker-image ${NOMAD_GPU_WORKER_IMAGE:-ghcr.io/zbt-tools/nomad-oasis/gpu-action:${IMAGE_TAG:-main}}
   north:      &north-image      ${NOMAD_NORTH_IMAGE:-ghcr.io/fairmat-nfdi/nomad-north:v2.0.0rc1}
