@@ -3,11 +3,11 @@ name: Build and publish docker images
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "for_plugin_test"]
     # Publish semver tags as releases.
     tags: ["v*.*.*"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "for_plugin_test"]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -16,22 +16,14 @@ env:
   UV_VERSION: 0.9
   PYTHON_VERSION: 3.12
   JUPYTER_VERSION: "2025-04-14"
-  # If you want to include custom documentation, create a fork of the repo below and link the forked repo here
-  NOMAD_DOCS_REPO: https://github.com/FAIRmat-NFDI/nomad-docs.git
-  NOMAD_DOCS_REPO_REF: "main"
-  # If you want to skip the tests for some plugins, add them to the list below
-  PLUGIN_TESTS_PLUGINS_TO_SKIP: |
-    workflowparsers
-    nomad_porous_materials
-    simulationworkflowschema
-    databaseparsers
-    soapnormalizer
-    eelsdbparser
-    atomisticparsers
-    nomad_aitoolkit
-    pynxtools_igor
-    electronicparsers
-    nomad_simulations
+  # By default, no documentation is built and the official docs at https://docs.nomad-lab.eu are used.
+  # If you want to include custom documentation, create a fork of https://github.com/FAIRmat-NFDI/nomad-docs.git
+  # and set both the forked repo URL and the git ref (branch, tag, or commit) to build here.
+  NOMAD_DOCS_REPO: ""
+  NOMAD_DOCS_REPO_REF: ""
+  # If you want to skip the tests for some plugins, add them here as a single string where
+  # each plugin is separated by a comma or a line break
+  PLUGIN_TESTS_PLUGINS_TO_SKIP: ""
 
 permissions:
   contents: write
@@ -45,17 +37,17 @@ jobs:
     name: Update Python Lock File
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.head_ref || github.ref_name }}
           submodules: true
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v7
         with:
           version: ${{ env.UV_VERSION }}
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -86,17 +78,17 @@ jobs:
     env:
       PLUGIN_TESTS_CI_NODE_TOTAL: 2
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.head_ref || github.ref_name }}
           submodules: true
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v7
         with:
           version: ${{ env.UV_VERSION }}
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -104,7 +96,7 @@ jobs:
         env:
           PLUGIN_TESTS_CI_NODE_INDEX: ${{ matrix.group }}
         run: |
-          # replace the yaml list with a string, use a `,` to separate the plugins
+          # Convert line-separated plugin names to the CLI's comma-separated format.
           PLUGINS_STRING=$(echo "$PLUGIN_TESTS_PLUGINS_TO_SKIP" | tr '\n' ',' | sed 's/,$//')
           uv run \
             --extra plugins \
@@ -128,10 +120,10 @@ jobs:
         include:
           - service: app
             target: final
-            image_suffix: ""
+            image_suffix: "-for-plugin-test"
           - service: jupyter
             target: jupyter
-            image_suffix: /jupyter
+            image_suffix: -for-plugin-test/jupyter
           # - service: gpu-action
           #   target: gpu_action_final
           #   image_suffix: /gpu-action
@@ -140,14 +132,14 @@ jobs:
           #   image_suffix: /cpu-action
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.head_ref || github.ref_name }}
           submodules: true
 
-      - uses: docker/setup-buildx-action@v3
+      - uses: docker/setup-buildx-action@v4
 
-      - uses: docker/login-action@v3
+      - uses: docker/login-action@v4
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -155,12 +147,12 @@ jobs:
 
       - name: Extract Docker metadata
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository }}${{ matrix.image_suffix }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: .
           build-args: |
@@ -195,12 +187,12 @@ jobs:
       JUPYTER_IMAGE: ${{ needs.build.outputs.jupyter_image }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.head_ref || github.ref_name }}
           submodules: true
 
-      - uses: docker/login-action@v3
+      - uses: docker/login-action@v4
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -209,6 +201,7 @@ jobs:
       - name: Start containers and check app/jupyter container health
         working-directory: tests
         run: |
+          docker compose up -d --quiet-pull --wait
           if ! docker compose up -d --quiet-pull --wait; then
             echo "Containers failed health check."
             echo "Logs for app:"
@@ -219,11 +212,11 @@ jobs:
           fi
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v7
         with:
           version: ${{ env.UV_VERSION }}
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 

@@ -74,7 +74,69 @@ Below are instructions for how to deploy this NOMAD Oasis distribution
 
    By default `docker-compose.yaml` uses the HTTP protocol for communication. This works for testing, but before entering production you must secure your setup with HTTPS; otherwise, any communication with the server—including credentials and sensitive data—can be compromised.
 
+<<<<<<< HEAD
    HTTPS requires a TLS certificate, which must be renewed periodically. Depending on your setup, you have several options:
+=======
+    ```sh
+    docker compose up -d
+    ```
+
+7. (Optional) You can now test that NOMAD is running with
+
+    ```sh
+    curl localhost/backend/alive
+    ```
+
+8. Finally, open [http://localhost](http://localhost) in your browser to start using your new NOMAD Oasis.
+
+   The GUI is served from the root path, while the NOMAD API and other backend services live under `/backend` (e.g. `http://localhost/backend/api/v1`). Links using the former `/nomad-oasis` base path are redirected automatically.
+
+You can find more details on setting up and maintaining an Oasis in the NOMAD docs here: [https://nomad-lab.eu/prod/v1/staging/docs/howto/oasis/configure.html](https://nomad-lab.eu/prod/v1/staging/docs/howto/oasis/configure.html)
+
+
+### Steps before entering production
+
+Before you can host your Oasis securely under a domain, you will have to go through a few additional steps
+
+1. Setting up host name
+
+   In production, your Oasis will be available under a domain name of your choice. This means that in some DNS server there is a record that points a domain name to your Oasis IP address.
+
+   Once this domain name is available, it needs to be configured in a few places. The examples below assume that your Oasis is available under `oasis.example.org`:
+
+   1. In the NOMAD configuration, set the `services.api_host` field in `configs/nomad.yaml`. Use only the host name (including any subdomain), without `https://` or a path:
+
+      ```yaml
+      services:
+        api_host: oasis.example.org
+      ```
+
+      Note that `configs/nomad.yaml` is built into the NOMAD image. For the change to take effect, either commit and push it so that a new image is built, or mount your local file into every running NOMAD service by uncommenting the `./configs/nomad.yaml:/app/nomad.yaml` line under `x-nomad-base.volumes` in `docker-compose.yaml`.
+
+   2. In `docker-compose.yaml`, update the login callback URL of the `north` service:
+
+      ```yaml
+      OAUTH_CALLBACK_URL: "http://oasis.example.org/backend/north/hub/oauth_callback"
+      ```
+
+      Once you enable HTTPS (see the next step), this URL must use `https://` instead.
+
+2. Configuring Secure HTTP and HTTPS Connections
+
+   By default `docker-compose.yaml` uses the HTTP protocol for communication. This works for testing, but before entering production you must secure your setup with HTTPS; otherwise, any communication with the server-including credentials and sensitive data-can be compromised.
+
+   The first step is to add a configuration to your `nomad.yaml` (the default configuration is stored in `configs/nomad.yaml`) that makes sure that HTTPS protocol is used by the links that the platform creates:
+
+   ```yaml
+   services:
+     https: true
+   ```
+
+   Also change the `OAUTH_CALLBACK_URL` of the `north` service in `docker-compose.yaml` to use `https://`, e.g. `https://oasis.example.org/backend/north/hub/oauth_callback`.
+
+   The second step is to setup a TLS certificate. The certificate must be issued for your Oasis host name, and it also needs to be
+   renewed periodically. Depending on your setup, you have several options:
+>>>>>>> template/main
 
    1. You already have a certificate.
 
@@ -96,6 +158,8 @@ Below are instructions for how to deploy this NOMAD Oasis distribution
         -out ./ssl/selfsigned.crt \
         -subj "/CN=localhost"
       ```
+
+      When testing under your own host name, replace `localhost` in the `CN` with it, e.g. `-subj "/CN=oasis.example.org"`.
 
    To start using a TLS certificate, update the `proxy` configuration in `docker-compose.yml`:
    ```diff
@@ -157,12 +221,17 @@ You can find more details on setting up and maintaining an Oasis in the NOMAD do
 
 ### For an existing Oasis
 
+<<<<<<< HEAD
 If you already have an Oasis running you only need to change the image being pulled in
 your `docker-compose.yaml` with `ghcr.io/zbt-tools/nomad-oasis:main` for the services
 `worker`, `app`, `north`, and `logtransfer`.
+=======
+If you already have an Oasis running you only need to change the image in
+`docker-compose.yaml` (either by setting `APP_IMAGE` in your `.env` or updating `x-images.nomad` in `docker-compose.yaml`) with `ghcr.io/{{ image_name }}:main`.
+>>>>>>> template/main
 
 If you want to use the `nomad.yaml` from this repository you also need to comment out
-the inclusion of the `nomad.yaml` under the volumes key of those services in the
+the inclusion of the `nomad.yaml` under the volumes key of `x-nomad-base` in
 `docker-compose.yaml`.
 
 ```yaml
@@ -170,7 +239,110 @@ volumes:
   # - ./configs/nomad.yaml:/app/nomad.yaml
 ```
 
+<<<<<<< HEAD
 To run the new image you can follow steps 5. and 6. [above](#for-a-new-oasis).
+=======
+To run the new image you can follow steps 5. and 7. [above](#for-a-new-oasis).
+
+
+## Deploying with Kubernetes
+
+As an alternative to Docker Compose, you can deploy NOMAD Oasis on Kubernetes using Helm.
+A minimal `values.yaml` for single-node clusters (Minikube, Kind, k3s, etc.) is provided in the [`kubernetes/`](kubernetes/) directory.
+
+1. Make sure you have [Helm](https://helm.sh/docs/intro/install/) (>= 3.x) and [kubectl](https://kubernetes.io/docs/tasks/tools/) installed, and a running Kubernetes cluster.
+
+2. Add the NOMAD Helm repository:
+
+    ```sh
+    helm repo add nomad https://fairmat-nfdi.github.io/nomad-helm-charts
+    helm repo update
+    ```
+
+3. Install the chart using the provided values file:
+
+    ```sh
+    helm install nomad-oasis nomad/default -f kubernetes/values.yaml --timeout 15m
+    ```
+
+4. Watch the pods come up:
+
+    ```sh
+    kubectl get pods -w
+    ```
+
+5. Once all pods are running, access the Oasis via port-forward:
+
+    ```sh
+    kubectl port-forward svc/nomad-oasis-proxy 80:80
+    ```
+
+    Then open [http://localhost](http://localhost) in your browser.
+
+> [!NOTE]
+> **Secrets:** The API secret is auto-generated by default. For production, you can
+> provide your own by creating a Kubernetes secret and referencing it in your values:
+>
+> ```sh
+> kubectl create secret generic nomad-api-secret --from-literal=password='<your-secret-here>'
+> ```
+>
+> ```yaml
+> # in kubernetes/values.yaml
+> nomad:
+>   secrets:
+>     api:
+>       existingSecret: "nomad-api-secret"
+>       key: password
+>       autoGenerate: false
+> ```
+>
+> If JupyterHub (NORTH) is enabled, you should also set the hub service API token:
+>
+> ```sh
+> kubectl create secret generic nomad-hub-token --from-literal=token='<your-token-here>'
+> ```
+>
+> ```yaml
+> nomad:
+>   secrets:
+>     north:
+>       hubServiceApiToken:
+>         existingSecret: "nomad-hub-token"
+>         key: token
+> ```
+
+> [!TIP]
+> To use your own distribution image, update the `nomad.image` section in `kubernetes/values.yaml`
+> to point to your container registry (e.g. `ghcr.io/<your-org>/<your-repo>:main`).
+
+For the full list of Helm chart options, environment-specific values files (AWS, Minikube, Kind),
+and advanced configuration, see the [nomad-helm-charts](https://github.com/FAIRmat-NFDI/nomad-helm-charts) repository.
+
+## Configuring Worker Replicas and Resource Limits
+
+The `docker-compose.yaml` file is configured to run four worker replicas by default, with each limited to 4 CPU cores and 8GB of RAM. You can adjust these values to match the capacity of your server.
+
+The relevant configuration is located in the `worker` service definition within the `docker-compose.yaml` file:
+
+```yaml
+services:
+  worker:
+    ...
+    deploy:
+      replicas: 4
+      resources:
+        limits:
+          cpus: "4.0" # Maximum 4 CPU cores
+          memory: 8G # Maximum 8GB RAM
+```
+
+-   `replicas`: The number of container instances to run for the worker service.
+-   `cpus`: The maximum number of CPU cores the container can use.
+-   `memory`: The maximum amount of memory the container can use.
+
+Adjust these values based on your server's available resources to optimize performance.
+>>>>>>> template/main
 
 ## Adding a plugin
 
@@ -246,6 +418,12 @@ jupyter = [
 ]
 ```
 
+## Using Docker image via plugin
+
+The recommended way to integrate the Docker image e.g., Jupyter into your NOMAD Oasis is through the plugin entry point system. This approach is cleaner, more maintainable, and automatically handles all necessary configurations.
+
+[`nomad-north-jupyter`](https://github.com/FAIRmat-NFDI/nomad-north-jupyter) is a NOMAD plugin that provides a containerized JupyterLab environment for interactive analysis within NORTH (NOMAD Remote Tools Hub). This plugin has been added to this distribution by default via `pyproject.toml`. In `nomad.yaml`, the `NORTHTool` entry point is configured to use the [custom Jupyter image](#the-jupyter-image) built in this repository.
+
 ## Automated Unit and Example Upload Tests in CI
 
 By default, all unit tests from every plugin are executed to ensure system stability and catch potential issues early. These tests validate core functionality and help maintain consistency across different plugins.
@@ -270,10 +448,80 @@ By default, documentation is built using the [nomad-docs](https://github.com/ZBT
 
 1. First, [fork the nomad-docs repository](https://github.com/ZBT-Tools/nomad-docs/fork).
 2. Make your desired changes in your fork.
-3. Update the `NOMAD_DOCS_REPO` variable in the [.github/workflows/docker-publish.yml](./.github/workflows/docker-publish.yml#L19) file to point to the URL of your forked repository.
+3. In the [.github/workflows/docker-publish.yml](./.github/workflows/docker-publish.yml#L19) file, set **both** of the following variables:
+   - `NOMAD_DOCS_REPO`: the URL of your forked repository.
+   - `NOMAD_DOCS_REPO_REF`: the branch, tag, or commit to build, e.g. the tag matching your `nomad-lab` version.
+4. In your `nomad.yaml`, change the documentation URL to point to the `/docs` subpath of your Oasis:
 
-This setup ensures that your custom documentation is used when building your Oasis.
+   ```yaml
+   documentation:
+     url: '<your-public-oasis-url>/docs`
+   ```
 
+The documentation is only built when both variables are set, and is then served under `/docs` on your Oasis. When building the image locally, you can pass the same values as build arguments:
+
+```sh
+docker build \
+  --build-arg NOMAD_DOCS_REPO=https://github.com/<your-org>/nomad-docs.git \
+  --build-arg NOMAD_DOCS_REPO_REF=<branch-tag-or-commit> \
+  .
+```
+
+## Backing up the Oasis
+
+For detailed instructions on backing up the data on your Oasis we recommend reading the
+[NOMAD documentation on administration](https://nomad-lab.eu/prod/v1/staging/docs/howto/oasis/administer.html#backups).
+
+As part of this repository there is a bash script for running the mongodump in `scripts/backup-mongo.sh`.
+1. Make sure you are in the top directory of this repository and that the `mongo` service (container `nomad_oasis_mongo`) is running.
+
+2. Run the script:
+
+    ```sh
+    bash scripts/backup-mongo.sh
+    ```
+
+3. Check that a `nomad_oasis_v1` mongodump was created in `.volumes/mongo` and that the
+dump was added to the logfile.
+
+    ```sh
+    ls .volumes/mongo
+    cat .volumes/mongo/backup.log
+    ```
+
+4. (Optional) Add the script to the crontab to run for example every night at 2 am.
+From the top directory of this repository, run:
+
+    ```sh
+    (crontab -l 2>/dev/null; echo "0 2 * * * bash $(realpath scripts/backup-mongo.sh)") | crontab -
+    ```
+
+    Finally, check that the cronjob was added:
+
+    ```sh
+    crontab -l
+    ```
+
+> [!CAUTION]
+> This will only dump the NOMAD mongo data onto the server. It is still up to you
+> to setup a proper backup of the dump in the `.volumes/mongo` directory as well as all
+> the raw files in the `.volumes/fs` directory.
+
+## Enabling NOMAD Actions
+
+To enable NOMAD Actions, you need to decide whether you need a CPU worker, a GPU worker, or both, and then make the following changes:
+
+1.  **Enable the required worker service(s) in `docker-compose.yaml`:**
+
+    Uncomment the `cpu_worker` service, the `gpu_worker` service, or both in the `docker-compose.yaml` file depending on your needs.
+
+2.  **Enable the corresponding build step(s) in the Docker publish workflow:**
+
+    In the `.github/workflows/docker-publish.yml` file, uncomment the build step(s) corresponding to the worker(s) you enabled in the `docker-compose.yaml` file.
+
+3.  **Adjust deployment resources:**
+
+    If necessary, adjust the deployment resources (e.g., CPU, memory, replicas) for the enabled worker service(s) in the `docker-compose.yaml` file to match your server's capacity.
 
 ## Updating the distribution from the template
 
@@ -297,7 +545,6 @@ The lock file merge conflicts can be resolved to use your versions instead of th
 git checkout --ours uv.lock
 ```
 
-
 For detailed instructions on how to resolve the merge conflicts between different version we refer you to the latest template release [notes](https://github.com/FAIRmat-NFDI/nomad-distro-template/releases/latest)
 
 Once the merge conflicts are resolved you should add the changes and commit them
@@ -318,3 +565,10 @@ Most likely you have not made the package public or provided a personal access t
 You can read how to make your package public in the GitHub docs [here](https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility)
 or how to configure a PAT (if you want to keep the distribution private) in the GitHub
 docs [here](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic).
+## Migration steps
+
+Sometimes there are significant changes in these distribution templates, and you will be required to take additional action upon updating to a newer version.
+
+For detailed migration instructions, please refer to the [NOMAD Oasis Migration Guide](https://docs.nomad-lab.eu/howto/oasis/migrate.html).
+
+

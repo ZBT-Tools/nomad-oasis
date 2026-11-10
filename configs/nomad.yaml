@@ -1,40 +1,42 @@
 services:
-  api_host: "localhost"
-  api_base_path: "/nomad-oasis"
+  api_host: "172.16.134.9"
+  api_port: 1080
+  api_base_path: "/backend"
+  https: false
 
 oasis:
   is_oasis: true
-  uses_central_user_management: true
+  uses_central_user_management: false
+keycloak:
+  server_url: "http://nomad_oasis_keycloak:8080/auth"
+  public_server_url: "http://172.16.134.9:1080/keycloak/auth"
+  realm_name: nomad
+  username: admin
+  password: "admin"
 
-north:
-  jupyterhub_crypt_key: "978bfb2e13a8448a253c629d8dd84ff89587f30e635b753153960930cad9d36d"
-  tools:
+plugins:
+  entry_points:
     options:
-      jupyter:
-        image: ghcr.io/zbt-tools/nomad-oasis/jupyter:main
-
-# keycloak:
-#   server_url: 'http://nomad_oasis_keycloak:8080/auth/'
-#   public_server_url: 'http://172.16.134.9:1080/keycloak/auth/'
-#   realm_name: nomad
-#   username: 'admin'
-#   password: 'password'
+      nomad_north_jupyter.north_tools:jupyter:
+        north_tool:
+          image: ghcr.io/zbt-tools/nomad-oasis-for-plugin-test/jupyter:for_plugin_test
 
 meta:
   deployment: "oasis"
-  deployment_url: "https://my-oasis.org/api"
   maintainer_email: "me@my-oasis.org"
 
 logstash:
   enabled: false
 
-mongo:
-  db_name: nomad_oasis_v1
-  
-elastic:
-  entries_index: nomad_oasis_entries_v1
-  materials_index: nomad_oasis_materials_v1
-
 temporal:
   enabled: true
 
+mongo:
+  db_name: nomad_oasis_v1
+
+elastic:
+  entries_index: nomad_oasis_entries_v1
+
+north:
+  enabled: true
+  enable_new_hub_api: true
