@@ -110,7 +110,7 @@ services:
       - discovery.type=single-node
       - xpack.security.enabled=false
     volumes:
-      - /mnt/data/nomad_production/elastic:/usr/share/elasticsearch/data
+      - elastic:/usr/share/elasticsearch/data
     healthcheck:
       test:
         - "CMD"
@@ -364,11 +364,11 @@ services:
       - 1080:1080
    
 
-# volumes:
+volumes:
 #  mongo:
 #    name: "nomad_oasis_mongo"
-#  elastic:
-#    name: "nomad_oasis_elastic_9"
+  elastic:
+    name: "nomad_oasis_elastic_9"
 #  keycloak:
 #    name: "nomad_oasis_keycloak"
 #  postgresql:
