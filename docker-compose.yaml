@@ -86,7 +86,7 @@ services:
       - KC_HOSTNAME_STRICT_HTTPS=false
     command: ["start-dev",  "--import-realm"]
     volumes:
-      - keycloak:/opt/keycloak/data/
+      - /mnt/data/nomad_production/keycloak:/opt/keycloak/data/
       # - keycloak:/opt/jboss/keycloak/standalone/data
       #- ./configs/nomad-realm.json:/tmp/nomad-realm.json
     healthcheck:
@@ -110,7 +110,7 @@ services:
       - discovery.type=single-node
       - xpack.security.enabled=false
     volumes:
-      - elastic:/usr/share/elasticsearch/data
+      - /mnt/data/nomad_production/elastic:/usr/share/elasticsearch/data
     healthcheck:
       test:
         - "CMD"
@@ -157,7 +157,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-temporal}
     image: docker.io/postgres:16
     volumes:
-      - postgresql:/var/lib/postgresql/data
+      - /mnt/data/nomad_production/postgresql:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-temporal}"]
       interval: 5s
@@ -309,7 +309,7 @@ services:
       # within the container
       - "/var/run/docker.sock:/var/run/docker.sock:rw"
       # Bind Docker volume on host for JupyterHub database and cookie secrets
-      - "nomad_north:/data"
+      - "/mnt/data/nomad_production/nomad_north:/data"
     healthcheck:
       test:
         - "CMD"
@@ -364,17 +364,17 @@ services:
       - 1080:1080
    
 
-volumes:
-  mongo:
-    name: "nomad_oasis_mongo"
-  elastic:
-    name: "nomad_oasis_elastic_9"
-  keycloak:
-    name: "nomad_oasis_keycloak"
-  postgresql:
-    name: "nomad_oasis_postgresql"
-  nomad_north:
-    name: "nomad_oasis_north"
+# volumes:
+#  mongo:
+#    name: "nomad_oasis_mongo"
+#  elastic:
+#    name: "nomad_oasis_elastic_9"
+#  keycloak:
+#    name: "nomad_oasis_keycloak"
+#  postgresql:
+#    name: "nomad_oasis_postgresql"
+#  nomad_north:
+#    name: "nomad_oasis_north"
 
 
 networks:
