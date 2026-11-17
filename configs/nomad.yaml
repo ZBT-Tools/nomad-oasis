@@ -1,5 +1,5 @@
 services:
-  api_host: "172.16.134.9"
+  api_host: "172.16.134.7"
   api_port: 1080
   api_base_path: "/backend"
   https: false
@@ -9,7 +9,7 @@ oasis:
   uses_central_user_management: false
 keycloak:
   server_url: "http://nomad_oasis_keycloak:8080/auth"
-  public_server_url: "http://172.16.134.9:1080/keycloak/auth"
+  public_server_url: "http://172.16.134.7:1080/keycloak/auth"
   realm_name: nomad
   username: admin
   password: "admin"
@@ -19,7 +19,7 @@ plugins:
     options:
       nomad_north_jupyter.north_tools:jupyter:
         north_tool:
-          image: ghcr.io/zbt-tools/nomad-oasis-for-plugin-test/jupyter:for_plugin_test
+          image: ghcr.io/zbt-tools/nomad-oasis/jupyter
 
 meta:
   deployment: "oasis"
