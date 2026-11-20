@@ -22,7 +22,7 @@ requires-python = ">=3.11"
 license = { file = "LICENSE" }
 dependencies = [
   "nomad-lab[infrastructure]==2.0.0",
-  "setuptools==84.0.0",
+  "setuptools==84.2.1",
   "fastapi==0.136.3",
   "nomad-avl-fire-rdm @ git+https://github.com/ZBT-Tools/nomad-avl-fire-rdm.git@d7c2fcb58eb68aaf6437a67035fc45a935c64aa3",
   "paramiko==5.0.0",
