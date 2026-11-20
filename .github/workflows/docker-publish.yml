@@ -52,7 +52,14 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Update lock file
-        run: uv lock
+        env:
+          BUILD_BRANCH: ${{ github.head_ref || github.ref_name }}
+        run: |
+          if [[ "$BUILD_BRANCH" == "for_plugin_test" ]]; then
+            uv lock --upgrade-package pynxtools-xrm
+          else
+            uv lock
+          fi
 
       # Commits any changes made to the lockfile
       - name: Commit lock file changes
