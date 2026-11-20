@@ -7473,8 +7473,8 @@ wheels = [
 
 [[package]]
 name = "pynxtools-xrm"
-version = "0.0.post1.dev19+g2e5e3f95e"
-source = { git = "https://github.com/ZBT-Tools/pynxtools-xrm#2e5e3f95ed2ba8c60b8c9f132d3c1329225e9a07" }
+version = "0.0.post1.dev25+g25aa3fbe0"
+source = { git = "https://github.com/ZBT-Tools/pynxtools-xrm#25aa3fbe0dcae7c9a57386cf639afda91a2b205f" }
 dependencies = [
     { name = "h5py" },
     { name = "numpy" },
