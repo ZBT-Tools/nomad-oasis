@@ -4887,8 +4887,8 @@ provides-extras = ["plugins", "jupyter", "gpu-action", "cpu-action", "dev"]
 
 [[package]]
 name = "nomad-electrolysis-database"
-version = "0.3.0"
-source = { git = "https://github.com/ZBT-Tools/nomad-electrolysis-database.git#949e42959649319249dffdded5be7cbd13a17994" }
+version = "0.4.2"
+source = { git = "https://github.com/ZBT-Tools/nomad-electrolysis-database.git#8e1239d163b0d4774b4fa65927e888812b69048a" }
 dependencies = [
     { name = "nomad-lab" },
 ]
