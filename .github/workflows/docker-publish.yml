@@ -56,7 +56,7 @@ jobs:
           BUILD_BRANCH: ${{ github.head_ref || github.ref_name }}
         run: |
           if [[ "$BUILD_BRANCH" == "for_plugin_test" ]]; then
-            uv lock --upgrade-package pynxtools-xrm
+            uv lock --upgrade-package pynxtools-xrm nomad-electrolysis-database
           else
             uv lock
           fi
