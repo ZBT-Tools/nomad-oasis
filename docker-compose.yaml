@@ -1,8 +1,8 @@
 x-images:
-  nomad:      &nomad-image      ${APP_IMAGE:-ghcr.io/zbt-tools/nomad-oasis-for-plugin-test:${IMAGE_TAG:-for_plugin_test}}
-  jupyter:    &jupyter-image    ${JUPYTER_IMAGE:-ghcr.io/zbt-tools/nomad-oasis-for-plugin-test/jupyter:${IMAGE_TAG:-for_plugin_test}}
-  cpu-worker: &cpu-worker-image ${NOMAD_CPU_WORKER_IMAGE:-ghcr.io/fairmat-nfdi/nomad-distro-template/cpu-action:${IMAGE_TAG:-main}}
-  gpu-worker: &gpu-worker-image ${NOMAD_GPU_WORKER_IMAGE:-ghcr.io/fairmat-nfdi/nomad-distro-template/gpu-action:${IMAGE_TAG:-main}}
+  nomad:      &nomad-image      ${APP_IMAGE:-ghcr.io/zbt-tools/nomad-oasis:${IMAGE_TAG:-main}}
+  jupyter:    &jupyter-image    ${JUPYTER_IMAGE:-ghcr.io/zbt-tools/nomad-oasis/jupyter:${IMAGE_TAG:-main}}
+  cpu-worker: &cpu-worker-image ${NOMAD_CPU_WORKER_IMAGE:-ghcr.io/zbt-tools/nomad-oasis/cpu-action:${IMAGE_TAG:-main}}
+  gpu-worker: &gpu-worker-image ${NOMAD_GPU_WORKER_IMAGE:-ghcr.io/zbt-tools/nomad-oasis/gpu-action:${IMAGE_TAG:-main}}
   north:      &north-image      ${NOMAD_NORTH_IMAGE:-ghcr.io/fairmat-nfdi/nomad-north:v2.0.0rc1}
   temporal-admin:  &temporal-admin-image  docker.io/temporalio/admin-tools:${TEMPORAL_VERSION:-1.31}
   temporal-server: &temporal-server-image docker.io/temporalio/server:${TEMPORAL_VERSION:-1.31}
@@ -29,7 +29,7 @@ x-nomad-base: &nomad-base
   volumes:
     # Uncomment the following line to mount a local nomad.yaml into all NOMAD services:
     - ./configs/nomad.yaml:/app/nomad.yaml
-    - ./.volumes/fs:/app/.volumes/fs
+    - /mnt/data/nomad_production/fs:/app/.volumes/fs
 
 # Base configuration for standard NOMAD services using the default nomad image (app and internal worker)
 x-nomad-service: &nomad-service
@@ -72,7 +72,7 @@ services:
       - "8080:8080"
     environment:
       #- KEYCLOAK_FRONTEND_URL=172.16.134.9:1080/keycloak/auth
-      - KC_HOSTNAME=http://172.16.134.9:1080/keycloak/auth/
+      - KC_HOSTNAME=http://172.16.134.7:1080/keycloak/auth/
       - KC_PROXY_HEADERS=xforwarded
       #- KC_HOSTNAME_PORT=8080
       - KC_HTTP_RELATIVE_PATH=/auth
@@ -86,7 +86,7 @@ services:
       - KC_HOSTNAME_STRICT_HTTPS=false
     command: ["start-dev",  "--import-realm"]
     volumes:
-      - keycloak:/opt/keycloak/data/
+      - /mnt/data/nomad_production/keycloak:/opt/keycloak/data/
       # - keycloak:/opt/jboss/keycloak/standalone/data
       #- ./configs/nomad-realm.json:/tmp/nomad-realm.json
     healthcheck:
@@ -106,7 +106,7 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:9.5.0
     container_name: nomad_oasis_elastic_9
     environment:
-      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m -XX:-UseBASE64Intrinsics
       - discovery.type=single-node
       - xpack.security.enabled=false
     volumes:
@@ -132,8 +132,8 @@ services:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/dev/null
     volumes:
-      - mongo:/data/db
-      - ./.volumes/mongo:/backup
+      - /mnt/data/nomad_production/mongo:/data/db
+      - /mnt/data/nomad_production/mongo_backup:/backup
     command: mongod --logpath=/dev/null # --quiet
     healthcheck:
       test:
@@ -157,7 +157,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-temporal}
     image: docker.io/postgres:16
     volumes:
-      - postgresql:/var/lib/postgresql/data
+      - /mnt/data/nomad_production/postgresql:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-temporal}"]
       interval: 5s
@@ -271,6 +271,9 @@ services:
   app:
     <<: *nomad-service
     container_name: nomad_oasis_app
+    networks:
+      - default
+      - north    
     environment:
       <<: *nomad-environment
       NOMAD_SERVICE: nomad_oasis_app
@@ -296,12 +299,14 @@ services:
     image: *north-image
     platform: linux/amd64
     container_name: nomad_oasis_north
+    networks:
+      - north    
     environment:
       NOMAD_API_URL: "http://app:8000/backend/api/v1"
       BASE_URL: "/backend/north/"
       OAUTH_CALLBACK_URL: "http://localhost/backend/north/hub/oauth_callback"
       DOCKER_PREFIX: "nomad-oasis-north"
-      DOCKER_NETWORK: "nomad_oasis_network"
+      DOCKER_NETWORK: &north-network-name "nomad_oasis_north_network"
     env_file:
       - ./.env.north
     volumes:
@@ -309,7 +314,7 @@ services:
       # within the container
       - "/var/run/docker.sock:/var/run/docker.sock:rw"
       # Bind Docker volume on host for JupyterHub database and cookie secrets
-      - "nomad_north:/data"
+      - "/mnt/data/nomad_production/nomad_north:/data"
     healthcheck:
       test:
         - "CMD"
@@ -330,6 +335,8 @@ services:
     image: *jupyter-image
     platform: linux/amd64
     container_name: nomad_jupyter_image
+    networks:
+      - north    
     pull_policy: always
     entrypoint: ["true"]
     deploy:
@@ -338,8 +345,11 @@ services:
   # nomad proxy (a reverse proxy for nomad)
   proxy:
     restart: unless-stopped
-    image: docker.io/nginx:1.31.1-alpine
+    image: docker.io/nginx:1.31.9-alpine
     container_name: nomad_oasis_proxy
+    networks:
+      - default
+      - north    
     command: nginx -g 'daemon off;'
     volumes:
       # Shared config
@@ -365,18 +375,21 @@ services:
    
 
 volumes:
-  mongo:
-    name: "nomad_oasis_mongo"
+#  mongo:
+#    name: "nomad_oasis_mongo"
   elastic:
     name: "nomad_oasis_elastic_9"
-  keycloak:
-    name: "nomad_oasis_keycloak"
-  postgresql:
-    name: "nomad_oasis_postgresql"
-  nomad_north:
-    name: "nomad_oasis_north"
+#  keycloak:
+#    name: "nomad_oasis_keycloak"
+#  postgresql:
+#    name: "nomad_oasis_postgresql"
+#  nomad_north:
+#    name: "nomad_oasis_north"
 
 
 networks:
   default:
     name: nomad_oasis_network
+  north:
+    # DockerSpawner uses this network for user-launched tools.
+    name: *north-network-name    

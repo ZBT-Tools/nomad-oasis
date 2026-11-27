@@ -227,7 +227,7 @@ your `docker-compose.yaml` with `ghcr.io/zbt-tools/nomad-oasis:main` for the ser
 `worker`, `app`, `north`, and `logtransfer`.
 =======
 If you already have an Oasis running you only need to change the image in
-`docker-compose.yaml` (either by setting `APP_IMAGE` in your `.env` or updating `x-images.nomad` in `docker-compose.yaml`) with `ghcr.io/{{ image_name }}:main`.
+`docker-compose.yaml` (either by setting `APP_IMAGE` in your `.env` or updating `x-images.nomad` in `docker-compose.yaml`) with `ghcr.io/zbt-tools/nomad-oasis:main`.
 >>>>>>> template/main
 
 If you want to use the `nomad.yaml` from this repository you also need to comment out
